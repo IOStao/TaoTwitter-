@@ -1,5 +1,5 @@
 //
-//  ViewController.h
+//  NBTabBar.h
 //  韬微博4.0
 //
 //  Created by wzt on 15/10/19.
@@ -8,8 +8,6 @@
 
 #import <UIKit/UIKit.h>
 
-@interface ViewController : UIViewController
-
+@interface NBTabBar : UITabBar
 
 @end
-
