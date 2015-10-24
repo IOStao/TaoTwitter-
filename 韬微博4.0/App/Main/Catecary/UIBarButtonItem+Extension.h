@@ -7,7 +7,8 @@
 //
 
 #import <UIKit/UIKit.h>
+#import "TaoNavigationBarConfig.h"
 
 @interface UIBarButtonItem (Extension)
-+ (UIBarButtonItem *)itemWithTarget:(id)target action:(SEL)action image:(NSString *)image highImage:(NSString *)highImage;
++ (UIBarButtonItem *)itemWithTarget:(id)target action:(SEL)action type:(TaoNavBarButtonType)type title:(NSString *)title;
 @end

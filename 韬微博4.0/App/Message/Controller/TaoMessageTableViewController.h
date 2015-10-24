@@ -6,8 +6,8 @@
 //  Copyright © 2015年 Baidu. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import "NBBaseViewController.h"
 
-@interface TaoMessageTableViewController : UITableViewController
+@interface TaoMessageTableViewController : NBBaseViewController
 
 @end

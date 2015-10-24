@@ -7,7 +7,14 @@
 //
 
 #import <UIKit/UIKit.h>
+@class NBTabBar;
+@protocol NBTaBarDelegate <UITabBarDelegate>
+@required
+- (void)PlusBtnClickWithTabBar:(NBTabBar *)tabBar;
+
+@end
 
 @interface NBTabBar : UITabBar
+@property(nonatomic, weak) id<NBTaBarDelegate> delegate;
 
 @end

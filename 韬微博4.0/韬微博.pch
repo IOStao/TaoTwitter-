@@ -13,16 +13,26 @@
 // You will also need to set the Prefix Header build setting of one or more of your targets to reference this file.
 
 // RGB颜色
-#define HWColor(r, g, b) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:1.0]
+#define TaoColor(r, g, b, a) [UIColor colorWithRed:(r)/255.0 green:(g)/255.0 blue:(b)/255.0 alpha:(a)/1.0]
 
 // 随机色
-#define HWRandomColor HWColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
+#define TaoRandomColor TaoColor(arc4random_uniform(256), arc4random_uniform(256), arc4random_uniform(256))
 
 #import "UIView+Extension.h"
 #import "UIBarButtonItem+Extension.h"
+#import "NSString+Extension.h"
+#import "NSDate+Extension.h"
+#import "TaoConst.h"
+#import "UIColor+Extension.h"
+#import "UIView+TaoSingnal.h"
+#import "TaoSearverAPI.h"
+#import "TaoHTTPTool.h"
+
 
 // 通知中心
-#define HWNotificationCenter [NSNotificationCenter defaultCenter]
+#define TaoNotificationCenter [NSNotificationCenter defaultCenter]
+
+#define TaoScreenWidth   [UIScreen mainScreen].bounds.size.width
 
 #ifdef DEBUG // 处于开发阶段
 #define HWLog(...) NSLog(__VA_ARGS__)
