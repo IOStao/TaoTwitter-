@@ -8,7 +8,7 @@
 
 #import "TaoAccountTableViewCell.h"
 #import <SDWebImage/UIImageView+WebCache.h>
-#import "UIImage+Clip.h"
+
 @interface TaoAccountTableViewCell ()
 @property (weak, nonatomic) IBOutlet UIImageView *accountImage;
 @property (weak, nonatomic) IBOutlet UILabel *accountName;
@@ -21,13 +21,13 @@
     // Initialization code
 }
 
-- (void)setUser:(TaoUser *)user {
-    _user = user;
+- (void)setAccount:(TaoAccountItem *)account {
+    _account = account;
 
-    [_accountImage sd_setImageWithURL:[NSURL URLWithString:_user.avatar_hd] placeholderImage:[UIImage imageNamed:@"login_user"] options:SDWebImageLowPriority|SDWebImageRetryFailed];
+    [_accountImage sd_setImageWithURL:[NSURL URLWithString:_account.user.avatar_hd] placeholderImage:[UIImage imageNamed:@"login_user"] options:SDWebImageLowPriority|SDWebImageRetryFailed];
     self.accountImage.layer.cornerRadius = self.accountImage.frame.size.width / 2;
     self.accountImage.clipsToBounds = YES;
-    _accountName.text = _user.screen_name;
+    _accountName.text = _account.user.screen_name;
 }
 
 

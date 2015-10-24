@@ -7,39 +7,32 @@
 //
 
 #import "TaoUserDefults.h"
-#import "FCModel.h"
+#import "FMDB.h"
 
+static FMDatabase *_db;
 static TaoUserDefults *_userDefaults=nil;
 @implementation TaoUserDefults
 -(void)createTheDatabase
 {
-    //建表
-    NSArray* sqlCreateArray = @[//------------------ 表 ----------------------
-                                @"CREATE TABLE IF NOT EXISTS UserDefaults (key TEXT DEFAULT NULL,value BLOB DEFAULT NULL);",
-                                //------------------索引----------------------
-                                @"CREATE UNIQUE INDEX IF NOT EXISTS UserDefaults_index ON UserDefaults(key);"
-                                ];
+    // 1.打开数据库
+    NSString *path = [[NSSearchPathForDirectoriesInDomains(NSDocumentDirectory, NSUserDomainMask, YES) lastObject] stringByAppendingPathComponent:@"statuses.sqlite"];
+    _db = [FMDatabase databaseWithPath:path];
+    [_db open];
     
-    for (NSString* str in sqlCreateArray) {
-        [FCModel inDatabaseSync:^(FMDatabase *db) {
-            if ([db executeUpdate:str]) {
-                ZDLogDebug(@"Create OK!");
-            };
-        }];
-    }
+    // 2.创表
+    [_db executeUpdate:  @"CREATE TABLE IF NOT EXISTS UserDefaults (key TEXT DEFAULT NULL,value BLOB DEFAULT NULL);"];
 }
 #pragma mark - custom
 - (id)objectForKey:(NSString *)defaultName
 {
     __block NSData* tempData = nil;
-    [FCModel inDatabaseSync:^(FMDatabase *db) {
-        FMResultSet *rs = [db executeQuery:@"SELECT value FROM UserDefaults WHERE key = ?",defaultName];
-        while ([rs next]) {
-            tempData = [rs dataForColumn:@"value"];
-        }
-    }];
+    
+    FMResultSet *rs = [_db executeQuery:@"SELECT value FROM UserDefaults WHERE key = ?",defaultName];
+    while ([rs next]) {
+        tempData = [rs dataForColumn:@"value"];
+    }
+    
     NSDictionary* resultDict = nil;
-    //ZDLogDebug(@"tempData=%@",tempData);
     if (tempData != nil) {
         resultDict =[NSKeyedUnarchiver unarchiveObjectWithData:tempData];
     }
@@ -51,19 +44,12 @@ static TaoUserDefults *_userDefaults=nil;
 }
 - (void)setObject:(id)value forKey:(NSString *)defaultName
 {
-    [FCModel inDatabaseSync:^(FMDatabase *db) {
-        if ([db executeUpdate:@"REPLACE INTO UserDefaults(key,value) VALUES (?,?);",defaultName,[NSKeyedArchiver archivedDataWithRootObject:@{@"value": value}]]) {
-            // ZDLogDebug(@"insert OK");
-        }
-    }];
+    [_db executeUpdate:@"REPLACE INTO UserDefaults(key,value) VALUES (?,?);",defaultName,[NSKeyedArchiver archivedDataWithRootObject:@{@"value": value}]];
+
 }
-- (void)removeObjectForKey:(NSString *)defaultName
-{
-    [FCModel inDatabaseSync:^(FMDatabase *db) {
-        if ([db executeUpdate:@"DELETE FROM UserDefaults WHERE key = ?",defaultName]) {
-            //ZDLogDebug(@"remove OK!");
-        };
-    }];
+- (void)removeObjectForKey:(NSString *)defaultName {
+   
+    [_db executeUpdate:@"DELETE FROM UserDefaults WHERE key = ?",defaultName];
 }
 #pragma mark - common
 - (id)init
@@ -78,13 +64,12 @@ static TaoUserDefults *_userDefaults=nil;
 + (id)standardUserDefaults{
     static dispatch_once_t predUserDefaults;
     dispatch_once(&predUserDefaults, ^{
-        _userDefaults=[[KIDUserDefaults alloc] init];
+        _userDefaults=[[TaoUserDefults alloc] init];
     });
     return _userDefaults;
 }
 
-+(id)alloc
-{
++(id)alloc {
     NSAssert(_userDefaults == nil, @"Attempted to allocate a second instance of a singleton.");
     return [super alloc];
 }

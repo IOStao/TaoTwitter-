@@ -12,10 +12,11 @@ typedef void(^finishBlack)(void);
 
 @interface TaoAccountViewModel : NSObject
 
-@property (nonatomic, strong) TaoUser *user;
 @property(nonatomic, copy)finishBlack myBlock;
-@property (nonatomic, strong) NSMutableArray *accounts;
+@property (nonatomic, strong) __block NSMutableArray *accounts;
 
 - (void)loadData;
 - (void)saveDateWithResphone:(WBBaseResponse *)response;
+- (void)removeAccountAtindex:(NSInteger)index;
+- (void)exchangeObjectAtIndex:(NSInteger)sourceIndex withObjectAtIndex:(NSInteger)derationIndex;
 @end

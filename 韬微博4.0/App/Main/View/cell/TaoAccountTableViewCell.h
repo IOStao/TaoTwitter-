@@ -9,5 +9,5 @@
 #import <UIKit/UIKit.h>
 
 @interface TaoAccountTableViewCell : UITableViewCell
-@property (nonatomic, strong) TaoUser *user;
+@property (nonatomic, strong) TaoAccountItem *account;
 @end

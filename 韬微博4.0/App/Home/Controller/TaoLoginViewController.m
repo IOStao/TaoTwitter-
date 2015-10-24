@@ -31,11 +31,6 @@
     // Do any additional setup after loading the view.
 }
 
-- (void)didReceiveMemoryWarning {
-    [super didReceiveMemoryWarning];
-    // Dispose of any resources that can be recreated.
-}
-
 - (void)viewDidAppear:(BOOL)animated {
     [super viewDidAppear:animated];
     dispatch_after(dispatch_time(DISPATCH_TIME_NOW, (int64_t)(0.5 * NSEC_PER_SEC)), dispatch_get_main_queue(), ^{
@@ -46,15 +41,7 @@
     
 }
 
-/*
-#pragma mark - Navigation
-
-// In a storyboard-based application, you will often want to do a little preparation before navigation
-- (void)prepareForSegue:(UIStoryboardSegue *)segue sender:(id)sender {
-    // Get the new view controller using [segue destinationViewController].
-    // Pass the selected object to the new view controller.
-}
-*/
+#pragma  mark private
 - (void)tableview {
     _viewModel = [[TaoAccountViewModel alloc] init];
     _accountTableView = [[UITableView alloc] initWithFrame:self.view.bounds style:UITableViewStylePlain
@@ -78,6 +65,11 @@
     self.navigationItem.rightBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(configureSelf) type:TaoNavBarButtonTypeInsert title:@"完成"];
     self.navigationItem.leftBarButtonItem = [UIBarButtonItem itemWithTarget:self action:@selector(AccountAdd) type:TaoNavBarButtonTypeInsert title:@"添加"];
     [_accountTableView setEditing:YES];
+    NSLog(@"%@",[TaoAccountTool account]);
+}
+
+- (void)navRightBtnClick:(id)sender {
+#warning 系统设置
 }
 
 - (void)AccountAdd {
@@ -89,11 +81,7 @@
     };
 }
 
-- (void)navRightBtnClick:(id)sender {
-#warning 系统设置
-}
-
-#pragma mark tableview 
+#pragma mark tableviewDataSource
 - (NSInteger)tableView:(UITableView *)tableView numberOfRowsInSection:(NSInteger)section {
     return 1;
     
@@ -106,17 +94,13 @@
     return self.viewModel.accounts.count;
 }
 
+#pragma mark tableviewDelegate
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
-   
     TaoAccountTableViewCell *cell = [tableView dequeueReusableCellWithIdentifier:identifier];
-    
-    if (_viewModel.user) {
-        cell.user = _viewModel.user;
-    }
+    cell.account = (TaoAccountItem *)[_viewModel.accounts objectAtIndex:indexPath.section];
     cell.accessoryType = UITableViewCellAccessoryDisclosureIndicator;
     cell.showsReorderControl = YES;
     return cell;
-
 }
 
 - (CGFloat)tableView:(UITableView *)tableView heightForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -139,19 +123,14 @@
 
 - (void)tableView:(UITableView *)tableView commitEditingStyle:(UITableViewCellEditingStyle)editingStyle forRowAtIndexPath:(NSIndexPath *)indexPath {
     if (editingStyle == UITableViewCellEditingStyleDelete) {
-#warning 整理
-        TaoAccountItems *items = [TaoAccountTool account];
-        [items.items removeObjectAtIndex:indexPath.row];
-        [self.viewModel.accounts removeObjectAtIndex:indexPath.row];
-        [TaoAccountTool saveAccount:items];
+        [_viewModel removeAccountAtindex:indexPath.section];
         [_accountTableView reloadData];
     }
 }
 
 - (void)tableView:(UITableView *)tableView moveRowAtIndexPath:(NSIndexPath *)sourceIndexPath toIndexPath:(NSIndexPath *)destinationIndexPath {
-#warning 整理
-    [self.viewModel.accounts exchangeObjectAtIndex:sourceIndexPath.row withObjectAtIndex:destinationIndexPath.row];
-    
+    [_viewModel exchangeObjectAtIndex:sourceIndexPath.section withObjectAtIndex:destinationIndexPath.section];
+    [_accountTableView reloadData];
 }
 
 - (NSString *)tableView:(UITableView *)tableView titleForDeleteConfirmationButtonForRowAtIndexPath:(NSIndexPath *)indexPath {

@@ -10,7 +10,7 @@
 
 @interface TaoAccountTool : NSObject
 
-+ (void)saveAccount:(TaoAccountItems *)account;
++ (void)saveAccount:(NSMutableArray *)account;
 
-+ (TaoAccountItems *)account;
++ (NSMutableArray *)account;
 @end
