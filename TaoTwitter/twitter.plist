@@ -1,0 +1,54 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE plist PUBLIC "-//Apple//DTD PLIST 1.0//EN" "http://www.apple.com/DTDs/PropertyList-1.0.dtd">
+<plist version="1.0">
+<dict>
+	<key>startPoints</key>
+	<array>
+		<string>{0,12.5}</string>
+		<string>{10,12.5}</string>
+		<string>{25,12.5}</string>
+		<string>{33,47.5}</string>
+		<string>{40,24}</string>
+		<string>{46,47.5}</string>
+		<string>{60,12.5}</string>
+		<string>{70,12.5}</string>
+		<string>{60,47.5}</string>
+		<string>{85,12.5}</string>
+		<string>{95,12.5}</string>
+		<string>{110,12.5}</string>
+		<string>{120,12.5}</string>
+		<string>{135,12.5}</string>
+		<string>{135,12.5}</string>
+		<string>{135,30}</string>
+		<string>{135,47.5}</string>
+		<string>{160,12.5}</string>
+		<string>{160,12.5}</string>
+		<string>{180,12.5}</string>
+		<string>{160,30}</string>
+	</array>
+	<key>endPoints</key>
+	<array>
+		<string>{20,12.5}</string>
+		<string>{10,47.5}</string>
+		<string>{33,47.5}</string>
+		<string>{40,24}</string>
+		<string>{46,47.5}</string>
+		<string>{55,12.5}</string>
+		<string>{80,12.5}</string>
+		<string>{70,47.5}</string>
+		<string>{80,47.5}</string>
+		<string>{105,12.5}</string>
+		<string>{95,47.5}</string>
+		<string>{130,12.5}</string>
+		<string>{120,47.5}</string>
+		<string>{155,12.5}</string>
+		<string>{135,47.5}</string>
+		<string>{155,30}</string>
+		<string>{155,47.5}</string>
+		<string>{160,47.5}</string>
+		<string>{180,12.5}</string>
+		<string>{160,30}</string>
+		<string>{180,47.5}</string>
+	</array>
+</dict>
+</plist>

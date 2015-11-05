@@ -10,4 +10,6 @@
 
 @interface UIImage (Tao)
 -(UIImage*)scaleToSize:(CGSize)size;
+
++ (UIImage *)resizedImage:(NSString *)name;
 @end

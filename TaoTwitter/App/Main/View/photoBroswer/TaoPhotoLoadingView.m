@@ -29,7 +29,7 @@
         _failureLabel.bounds = CGRectMake(0, 0, self.bounds.size.width, 44);
         _failureLabel.textAlignment = NSTextAlignmentCenter;
         _failureLabel.center = self.center;
-        _failureLabel.text = @"图片下载失败";
+        _failureLabel.text = @"没有网络，请重试";
         _failureLabel.font = [UIFont boldSystemFontOfSize:20];
         _failureLabel.textColor = [UIColor whiteColor];
         _failureLabel.backgroundColor = [UIColor clearColor];
