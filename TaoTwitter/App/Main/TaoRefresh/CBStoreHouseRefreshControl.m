@@ -294,5 +294,12 @@ NSString *const yKey = @"y";
     
 }
 
+- (void)willMoveToWindow:(UIWindow *)newWindow {
+    for (BarItem *barItem in self.barItems) {
+        [barItem.layer removeAllAnimations];
+        barItem.alpha = 0;
+    }
+}
 
+#warning 加切换后台通知
 @end

@@ -33,7 +33,7 @@
 - (void)loadDataCacheBlock:(void (^)(NSError *))cacheBlock completeBlock:(void (^)(NSError *))complete notModified:(void (^)(NSError *))notModifiedBlock parameters:(id)parameter {
     Taostatus *sd = [self.dataSource firstObject];
     if (sd) {
-        self.since_id = sd.idstr.integerValue - 1;
+        self.since_id = sd.idstr.integerValue;
     }else {
         self.since_id = 0;
     }
@@ -63,11 +63,12 @@
 }
 
 - (void)loadMoreBlock:(void (^)(NSError *))complete parameters:(id)parameter {
-    Taostatus *md = [self.dataSource lastObject];
-    self.maxID = md.idstr.integerValue - 1;
+
    [[TaoNetManager sharedInstance] requestWithPath:@"statuses/friends_timeline.json" parameters:[NSDictionary dictionaryWithObject:@(self.maxID) forKey:@"max_id"] completion:^(NSError *error, Taostatuses *resultObject) {
        if (!error) {
            [self.dataSource addObjectsFromArray:resultObject.statuses];
+           Taostatus *md = [self.dataSource lastObject];
+           self.maxID = md.idstr.integerValue - 1;
            
        }else {
 #warning 无网络

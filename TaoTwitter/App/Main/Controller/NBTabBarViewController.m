@@ -17,7 +17,7 @@
 
 
 
-@interface NBTabBarViewController ()<NBTaBarDelegate>
+@interface NBTabBarViewController ()
 
 @end
 
@@ -78,7 +78,4 @@
 
 }
 
-- (void)PlusBtnClickWithTabBar:(NBTabBar *)tabBar {
-#warning waitting
-}
 @end

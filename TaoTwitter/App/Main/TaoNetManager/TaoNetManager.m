@@ -61,6 +61,9 @@ static NSString * kProcessIndentifier = @"KIDDownloadTaskProcessIndentifier";
 
 - (id)objectWithDictionary:(NSDictionary *)dict address:(NSString *)url {
    
+    if ([url  isEqual: @"https://api.weibo.com/2/statuses/repost_timeline.json"]) {
+        return [[Taoreposts alloc] initWithDictionary:dict error:nil];
+    }
     NSRange range;
     range.location = [url rangeOfString:@"/2/"].location + 3;
     range.length = [url rangeOfString:@"/" options:NSBackwardsSearch].location - range.location;
@@ -119,8 +122,8 @@ static NSString * kProcessIndentifier = @"KIDDownloadTaskProcessIndentifier";
         id netObject = nil;
         if ([resultDict isKindOfClass:[NSDictionary class]]) {
             netObject = [self objectWithDictionary:resultDict address:addrerss];
-            if (0 != [resultDict[@"errNo"] intValue]) {
-                error = [TaoNetManagerTools errorWithCode:[resultDict[@"errNo"] intValue] description:resultDict[@"errstr"]];
+            if (0 != [resultDict[@"error"] intValue]) {
+                error = [TaoNetManagerTools errorWithCode:[resultDict[@"error"] intValue] description:resultDict[@"errstr"]];
             }
         } else if (!error) {
             error = [TaoNetManagerTools errorWithCode:TaoCustomNetManagerErrorTypeParseJsonError description:@"咦，没有网络了"];

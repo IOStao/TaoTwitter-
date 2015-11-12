@@ -7,6 +7,7 @@
 //
 
 #import "NBTabBar.h"
+#import "TaoComeposeWindow.h"
 #define tabBarItemHeight 36
 #define tabBarItemY 3
 #define tabBarHeight 40
@@ -56,7 +57,9 @@
 }
 
 - (void)plusClick {
-    [self.delegate PlusBtnClickWithTabBar:self];
+    TaoComeposeWindow *compose = [TaoComeposeWindow sharedInstance];
+    [compose show];
+    
 }
 
 @end

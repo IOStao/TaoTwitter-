@@ -14,11 +14,12 @@
 @interface  TaoDetialTwitterSctionHeaderView()
 @property (nonatomic, strong) UIView *celearView;
 @property (nonatomic, strong) UIView *contenView;
-@property (nonatomic, strong) UILabel *reweetLable;
-@property (nonatomic, strong) UILabel *commentLable;
-@property (nonatomic, strong) UILabel *likeLable;
+@property (nonatomic, strong) UIButton *reweetBtn;
+@property (nonatomic, strong) UIButton *commentBtn;
+@property (nonatomic, strong) UIButton *likeBtn;
 @property (nonatomic, strong) UIView  *slideLine;
 @property (nonatomic, strong) UIView  *line;
+@property (nonatomic, weak)   UIButton *selectedBtn;
 
 @end
 
@@ -41,12 +42,11 @@
     if (!_contenView) {
         _contenView = [[UIView alloc] init];
         _contenView.backgroundColor = [UIColor whiteColor];
-        [_contenView addGestureRecognizer:[[UITapGestureRecognizer alloc]initWithTarget:self  action:@selector(LableTap:)]];
         [self addSubview:_contenView];
         [_contenView mas_makeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.celearView.mas_bottom);
             make.left.right.equalTo(@(0));
-            make.height.equalTo(@(50)).priorityHigh();
+            make.height.equalTo(@(45)).priorityHigh();
         }];
     }
     return _contenView;
@@ -57,10 +57,7 @@
         _slideLine = [[UIView alloc] init];
         _slideLine.backgroundColor = [UIColor orangeColor];
         [self.contenView addSubview:_slideLine];
-//        [_slideLine mas_makeConstraints:^(MASConstraintMaker *make) {
-//            make.height.equalTo(@(2));
-//            make.bottom.equalTo(@(0));
-//        }];
+        
     }
     return _slideLine;
 }
@@ -79,49 +76,46 @@
     return _line;
 }
 
-- (UILabel *)reweetLable {
-    if (!_reweetLable) {
-        _reweetLable = [[UILabel alloc] init];
-        _reweetLable.font = [UIFont systemFontOfSize:15];
-        _reweetLable.textColor = [UIColor tao_textLableColor];
-        [self.contenView addSubview:_reweetLable];
-        [_reweetLable mas_makeConstraints:^(MASConstraintMaker *make) {
+- (UIButton *)reweetBtn {
+    if (!_reweetBtn) {
+        _reweetBtn = [[UIButton alloc] init];
+        _reweetBtn.tag = TaoTwitterDetailHeaderViewTypeRetweeted;
+        [self.contenView addSubview:_reweetBtn];
+        [_reweetBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.left.equalTo(@(10));
             make.top.equalTo(@(0));
             make.bottom.equalTo(self.slideLine.mas_top);
         }];
     }
-    return _reweetLable;
+    return _reweetBtn;
 }
 
-- (UILabel *)commentLable {
-    if (!_commentLable) {
-        _commentLable = [[UILabel alloc] init];
-        _commentLable.font = [UIFont systemFontOfSize:15];
-        _commentLable.textColor = [UIColor tao_textLableColor];
-        [self.contenView addSubview:_commentLable];
-        [_commentLable mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.equalTo(self.reweetLable.mas_right).offset(15);
+- (UIButton *)commentBtn {
+    if (!_commentBtn) {
+        _commentBtn = [[UIButton alloc] init];
+        _commentBtn.tag = TaoTwitterDetailHeaderViewTypeComment;
+        [self.contenView addSubview:_commentBtn];
+        [_commentBtn mas_makeConstraints:^(MASConstraintMaker *make) {
+            make.left.equalTo(self.reweetBtn.mas_right).offset(15);
             make.top.equalTo(@(0));
             make.bottom.equalTo(self.slideLine.mas_top);
         }];
     }
-    return _commentLable;
+    return _commentBtn;
 }
 
-- (UILabel *)likeLable {
-    if (!_likeLable) {
-        _likeLable = [[UILabel alloc] init];
-        _likeLable.font = [UIFont systemFontOfSize:15];
-        _likeLable.textColor = [UIColor tao_textLableColor];
-        [self.contenView addSubview:_likeLable];
-        [_likeLable mas_makeConstraints:^(MASConstraintMaker *make) {
+- (UIButton *)likeBtn {
+    if (!_likeBtn) {
+        _likeBtn = [[UIButton alloc] init];
+        [self.contenView addSubview:_likeBtn];
+        _likeBtn.tag = TaoTwitterDetailHeaderViewTypeLike;
+        [_likeBtn mas_makeConstraints:^(MASConstraintMaker *make) {
             make.right.equalTo(@(-10));
             make.top.equalTo(@(0));
             make.bottom.equalTo(self.slideLine.mas_top);
         }];
     }
-    return _likeLable;
+    return _likeBtn;
 }
 
 - (void)setTwitter:(Taostatus *)twitter {
@@ -130,101 +124,64 @@
     [self contenView];
     [self slideLine];
     [self line];
-    self.reweetLable.text = [NSString stringWithFormat:@"转发  %@",[self setupCount:twitter.reposts_count]];
-    self.commentLable.text = [NSString stringWithFormat:@"评论  %@",[self setupCount:twitter.comments_count]];
-    self.likeLable.text = [NSString stringWithFormat:@"赞  %@",[self setupCount:twitter.attitudes_count]];
     
+    [self setupBtnTitle:self.reweetBtn count:twitter.reposts_count defaultTitle:@"转发"];
+    [self setupBtnTitle:self.commentBtn count:twitter.comments_count defaultTitle:@"评论"];
+    [self setupBtnTitle:self.likeBtn count:twitter.attitudes_count defaultTitle:@"赞"];
+}
+
+- (void)setDelegate:(id<TaoDetialTwitterSctionHeaderViewDelegate>)delegate {
+    _delegate = delegate;
     if (_twitter.comments_count) {
-        self.type = TaoTwitterDetailHeaderViewTypeComment;
+        [self btnClick:self.commentBtn];
     }else if (_twitter.reposts_count) {
-        self.type = TaoTwitterDetailHeaderViewTypeRetweeted;
-    }else if (_twitter.attitudes_count){
-        self.type = TaoTwitterDetailHeaderViewTypeLike;
+        [self btnClick:self.reweetBtn];
+    }else if (_twitter.attitudes_count) {
+        [self btnClick:self.likeBtn];
     }else {
-        self.type = TaoTwitterDetailHeaderViewTypeComment;
+        [self btnClick:self.commentBtn];
     }
-
 }
 
-- (void)setType:(TaoTwitterDetailHeaderViewType)type {
-    _type = type;
-    
-    switch (type) {
-        case TaoTwitterDetailHeaderViewTypeRetweeted: {
-            
-            self.reweetLable.textColor = [UIColor blackColor];
-            self.commentLable.textColor = [UIColor tao_textLableColor];
-            self.likeLable.textColor = [UIColor tao_textLableColor];
-            [self.slideLine mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.left.right.equalTo(self.reweetLable);
-                make.height.equalTo(@(2)).priorityHigh();
-                make.bottom.equalTo(@(0));
-            }];
-        }
-        break;
-            
-        case TaoTwitterDetailHeaderViewTypeComment: {
-            
-            self.reweetLable.textColor = [UIColor tao_textLableColor];
-            self.commentLable.textColor = [UIColor blackColor];
-            self.likeLable.textColor = [UIColor tao_textLableColor];
-            [self.slideLine mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.left.right.equalTo(self.commentLable);
-                make.height.equalTo(@(2)).priorityHigh();
-                make.bottom.equalTo(@(0));
-            }];
-        }
-            break;
-            
-        case TaoTwitterDetailHeaderViewTypeLike:{
-            self.reweetLable.textColor = [UIColor tao_textLableColor];
-            self.commentLable.textColor = [UIColor tao_textLableColor];
-            self.likeLable.textColor = [UIColor blackColor];
-            [self.slideLine mas_remakeConstraints:^(MASConstraintMaker *make) {
-                make.left.right.equalTo(self.likeLable);
-                make.height.equalTo(@(2)).priorityHigh();
-                make.bottom.equalTo(@(0));
-            }];
-
-        }
-            break;
-    }
-    [UIView animateWithDuration:0.3 animations:^{
-        [self layoutIfNeeded];
-    }];
-}
-
-- (void)LableTap:(UITapGestureRecognizer *)gesture {
-    CGPoint  location = [gesture locationInView:self.contenView];
-
-    if (CGRectContainsPoint(self.reweetLable.frame, location)) {
-        self.type = TaoTwitterDetailHeaderViewTypeRetweeted;
-    }
-    else if (CGRectContainsPoint(self.commentLable.frame, location)) {
-        self.type = TaoTwitterDetailHeaderViewTypeComment;
-    }
-    else if (CGRectContainsPoint(self.likeLable.frame, location)) {
-        self.type = TaoTwitterDetailHeaderViewTypeLike;
-    }
-    if ([self.delegate respondsToSelector:@selector(TaoDetialTwitterHeaderView:TapLable:)]) {
-        [self.delegate TaoDetialTwitterHeaderView:self TapLable:self.type];
-    }
-    
-}
-
-- (NSString *)setupCount:(int)count
-{
-    NSString *defaultTitle = nil;
+- (void)setupBtnTitle:(UIButton *)button count:(int)count defaultTitle:(NSString *)defaultTitle {
     if (count >= 10000) { // [10000, 无限大)
-        defaultTitle = [NSString stringWithFormat:@"%.1f万", count / 10000.0];
-        // 用空串替换掉所有的.0
+        defaultTitle = [NSString stringWithFormat:@"%@  %.1f万", defaultTitle, count / 10000.0];
         defaultTitle = [defaultTitle stringByReplacingOccurrencesOfString:@".0" withString:@""];
     } else if (count > 0) { // (0, 10000)
-        defaultTitle = [NSString stringWithFormat:@"%d", count];
-    }else  {
-        defaultTitle = @"0";
+        defaultTitle = [NSString stringWithFormat:@"%@  %d ", defaultTitle, count];
+    } else {
+        defaultTitle = [NSString stringWithFormat:@"%@  0", defaultTitle];
     }
-    return defaultTitle;
+    
+    button.titleLabel.font = [UIFont systemFontOfSize:14];
+    [button setTitle:defaultTitle forState:UIControlStateNormal];
+    [button setTitle:defaultTitle forState:UIControlStateSelected];
+    [button setTitleColor:[UIColor blackColor] forState:UIControlStateSelected];
+    [button setTitleColor:[UIColor tao_textLableColor] forState:UIControlStateNormal];
+    [button addTarget:self  action:@selector(btnClick:) forControlEvents:UIControlEventTouchUpInside];
 }
 
+- (void)btnClick:(UIButton *)btn {
+    self.type = btn.tag;
+    
+    self.selectedBtn.selected = NO;
+    btn.selected = YES;
+    self.selectedBtn = btn;
+    
+    [_slideLine mas_remakeConstraints:^(MASConstraintMaker *make) {
+        make.height.equalTo(@(2)).priorityHigh();
+        make.bottom.equalTo(@(0));
+        make.left.right.equalTo(btn);
+    }];
+    
+
+    [UIView animateWithDuration:0.35 animations:^{
+        self.slideLine.centerX = btn.centerX;
+    }];
+    
+    if ([self.delegate respondsToSelector:@selector(TaoDetialTwitterHeaderView:btnClick:)]) {
+        [self.delegate TaoDetialTwitterHeaderView:self btnClick:self.type];
+    }
+    
+}
 @end
