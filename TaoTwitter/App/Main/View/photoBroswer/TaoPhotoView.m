@@ -9,7 +9,6 @@
 #import "TaoPhotoView.h"
 #import "TaoPhotoModel.h"
 #import "TaoPhotoLoadingView.h"
-#import "UIImageView+WebCache.h"
 
 
 @interface TaoPhotoView (){
@@ -67,7 +66,7 @@
     if (_photo.firstShow) { // 首次显示
         _imageView.image = _photo.placeholder; // 占位图片
         _photo.srcImageView.image = nil;
-        
+#warning 同步传入 progress
         // 不是gif，就马上开始下载
         if (![_photo.url.absoluteString hasSuffix:@"gif"]) {
             __unsafe_unretained TaoPhotoView *photoView = self;
@@ -211,11 +210,14 @@
     } completion:^(BOOL finished) {
         // 设置底部的小图片
         _photo.srcImageView.image = _photo.placeholder;
+       
         // 通知代理
         if ([self.photoViewDelegate respondsToSelector:@selector(photoViewDidEndZoom:)]) {
             [self.photoViewDelegate photoViewDidEndZoom:self];
         }
     }];
+    
+  
 }
 
 - (void)reset {

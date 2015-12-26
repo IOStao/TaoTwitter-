@@ -61,8 +61,8 @@
     
     // Do any additional setup after loading the view.
 #warning 研究
-    //    self.edgesForExtendedLayout = UIRectEdgeNone;
-    //    self.automaticallyAdjustsScrollViewInsets = NO;
+//    self.edgesForExtendedLayout = UIRectEdgeNone;
+//    self.automaticallyAdjustsScrollViewInsets = NO;
     
     [self.navBarConfig configBarItems];
  

@@ -12,4 +12,9 @@
 -(UIImage*)scaleToSize:(CGSize)size;
 
 + (UIImage *)resizedImage:(NSString *)name;
+
++ (UIImage *)imageWithColor:(UIColor *)color;
++ (UIImage *)imageWithColor:(UIColor *)color cornerRadius:(CGFloat)radius borderColor:(UIColor *)borderColor borderWidth:(CGFloat)borderWidth;
++ (UIImage *)imageWithColor:(UIColor *)color cornerRadius:(CGFloat)radius borderColor:(UIColor *)borderColor borderWidth:(CGFloat)borderWidth backgroundColor:(UIColor *)backgroundColor insets:(UIEdgeInsets)insets shadowColor:(UIColor *)shadowColor shadowOpacity:(CGFloat)shadowOpacity shadowRadius:(CGFloat)shadowRadius;
+
 @end

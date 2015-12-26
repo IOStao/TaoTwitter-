@@ -19,7 +19,6 @@
 @interface TaoPopMenuView ()
 @property (nonatomic, strong) NSArray * titleName;
 @property (nonatomic, weak ) UIImageView *composeImage;
-@property (nonatomic, weak ) UILabel  *composeLable;
 @property (nonatomic,assign) BOOL btnCanceled;
 @end
 

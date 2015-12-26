@@ -182,6 +182,5 @@
     if ([self.delegate respondsToSelector:@selector(TaoDetialTwitterHeaderView:btnClick:)]) {
         [self.delegate TaoDetialTwitterHeaderView:self btnClick:self.type];
     }
-    
 }
 @end

@@ -8,11 +8,14 @@
 
 #import "NBTabBar.h"
 #import "TaoComeposeWindow.h"
+#import "TaoComposeViewController.h"
+#import "NBNavigationViewController.h"
+#import "NBTabBarViewController.h"
 #define tabBarItemHeight 36
 #define tabBarItemY 3
 #define tabBarHeight 40
 
-@interface NBTabBar ()
+@interface NBTabBar ()<TaoComeposeWindowDelegate>
 @property(nonatomic, weak) UIButton *plusBtn;
 
 @end
@@ -59,7 +62,29 @@
 - (void)plusClick {
     TaoComeposeWindow *compose = [TaoComeposeWindow sharedInstance];
     [compose show];
+    compose.delegate = self;
     
+}
+
+- (void)TaoComeposeWindowModalVcWithType:(composeBtnType)type {
+    UIViewController *vc = [[UIApplication sharedApplication].delegate window].rootViewController;
+    __block NBTabBarViewController *tabbar = nil;
+    [vc.childViewControllers enumerateObjectsUsingBlock:^(__kindof UIViewController * _Nonnull obj, NSUInteger idx, BOOL * _Nonnull stop) {
+        if ([obj isKindOfClass:[NBTabBarViewController class]]) {
+            tabbar = obj;
+        }
+    }];
+    switch (type) {
+        case composeBtnTypeIdear:{
+           
+            NBNavigationViewController *nav = [[NBNavigationViewController alloc] initWithRootViewController:[[TaoComposeViewController alloc] init]];
+            [tabbar presentViewController:nav animated:YES completion:nil];
+        } break;
+            
+        default:
+            [tabbar presentViewController:[[TaoComposeViewController alloc] init] animated:YES completion:nil];
+            break;
+    }
 }
 
 @end

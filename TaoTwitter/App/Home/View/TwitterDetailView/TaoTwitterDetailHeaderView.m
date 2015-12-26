@@ -87,11 +87,11 @@
     [self rStatusView];
     [self detialRecommendView];
     [self line];
-    self.statusView.twitter = twitter;
+//    self.statusView.twitter = twitter;
     
     if (twitter.retweeted_status) {
         self.rStatusView.hidden = NO;
-        self.rStatusView.twitter = twitter.retweeted_status;
+//        self.rStatusView.twitter = twitter.retweeted_status;
         [_rStatusView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.statusView.mas_bottom).offset(10);
             make.left.right.equalTo(@(0));

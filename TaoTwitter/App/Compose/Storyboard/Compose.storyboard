@@ -1,0 +1,284 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<document type="com.apple.InterfaceBuilder3.CocoaTouch.Storyboard.XIB" version="3.0" toolsVersion="9531" systemVersion="15C50" targetRuntime="iOS.CocoaTouch" propertyAccessControl="none" useAutolayout="YES" useTraitCollections="YES" initialViewController="hjQ-vc-w5w">
+    <dependencies>
+        <deployment identifier="iOS"/>
+        <plugIn identifier="com.apple.InterfaceBuilder.IBCocoaTouchPlugin" version="9529"/>
+    </dependencies>
+    <scenes>
+        <!--Navigation Controller-->
+        <scene sceneID="BcO-5v-HCQ">
+            <objects>
+                <navigationController id="hjQ-vc-w5w" sceneMemberID="viewController">
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <navigationBar key="navigationBar" contentMode="scaleToFill" id="Rf6-Nl-Vy1">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="44"/>
+                        <autoresizingMask key="autoresizingMask"/>
+                    </navigationBar>
+                    <connections>
+                        <segue destination="Ewp-b8-lQf" kind="relationship" relationship="rootViewController" id="tdJ-ft-rmG"/>
+                    </connections>
+                </navigationController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="hf0-Xv-9e5" userLabel="First Responder" sceneMemberID="firstResponder"/>
+            </objects>
+            <point key="canvasLocation" x="-254" y="-26"/>
+        </scene>
+        <!--vc-->
+        <scene sceneID="WeI-5P-F17">
+            <objects>
+                <viewController storyboardIdentifier="TaoComposeViewController" id="Ewp-b8-lQf" userLabel="vc" customClass="TaoComposeViewController" sceneMemberID="viewController">
+                    <layoutGuides>
+                        <viewControllerLayoutGuide type="top" id="nhq-vL-3h7"/>
+                        <viewControllerLayoutGuide type="bottom" id="ASc-cf-1CS"/>
+                    </layoutGuides>
+                    <view key="view" contentMode="scaleToFill" id="nNb-qg-h2N">
+                        <rect key="frame" x="0.0" y="0.0" width="320" height="480"/>
+                        <autoresizingMask key="autoresizingMask" widthSizable="YES" heightSizable="YES"/>
+                        <subviews>
+                            <scrollView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" alwaysBounceVertical="YES" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="V2N-Mj-fqZ">
+                                <rect key="frame" x="0.0" y="64" width="320" height="336"/>
+                                <subviews>
+                                    <collectionView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" scrollEnabled="NO" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" dataMode="prototypes" translatesAutoresizingMaskIntoConstraints="NO" id="9Lx-DB-OJe">
+                                        <rect key="frame" x="15" y="155" width="290" height="290"/>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="290" id="8Vn-R2-5b0"/>
+                                        </constraints>
+                                        <collectionViewFlowLayout key="collectionViewLayout" minimumLineSpacing="5" minimumInteritemSpacing="5" id="DQ8-D0-ZrU" customClass="LayoutHorizontal">
+                                            <size key="itemSize" width="50" height="50"/>
+                                            <size key="headerReferenceSize" width="0.0" height="0.0"/>
+                                            <size key="footerReferenceSize" width="0.0" height="0.0"/>
+                                            <inset key="sectionInset" minX="0.0" minY="0.0" maxX="0.0" maxY="0.0"/>
+                                        </collectionViewFlowLayout>
+                                        <cells>
+                                            <collectionViewCell opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center" reuseIdentifier="compose" id="ufF-41-4Mw">
+                                                <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                <autoresizingMask key="autoresizingMask" flexibleMaxX="YES" flexibleMaxY="YES"/>
+                                                <view key="contentView" opaque="NO" clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="center">
+                                                    <rect key="frame" x="0.0" y="0.0" width="50" height="50"/>
+                                                    <autoresizingMask key="autoresizingMask"/>
+                                                    <color key="backgroundColor" white="0.0" alpha="0.0" colorSpace="calibratedWhite"/>
+                                                </view>
+                                            </collectionViewCell>
+                                        </cells>
+                                        <connections>
+                                            <outlet property="dataSource" destination="Ewp-b8-lQf" id="PCA-rl-5uG"/>
+                                            <outlet property="delegate" destination="Ewp-b8-lQf" id="6kz-dL-vGZ"/>
+                                            <outletCollection property="fd_collapsibleConstraints" destination="8Vn-R2-5b0" id="DT6-Rt-Yon"/>
+                                            <outletCollection property="fd_collapsibleConstraints" destination="zrJ-Db-2O4" id="gMp-RK-hbM"/>
+                                        </connections>
+                                    </collectionView>
+                                    <textView clipsSubviews="YES" multipleTouchEnabled="YES" contentMode="scaleToFill" horizontalHuggingPriority="251" verticalHuggingPriority="251" placeholderIntrinsicWidth="290" placeholderIntrinsicHeight="100" showsHorizontalScrollIndicator="NO" showsVerticalScrollIndicator="NO" translatesAutoresizingMaskIntoConstraints="NO" id="oBh-HI-JN0" customClass="TaoComposeTextView">
+                                        <rect key="frame" x="15" y="0.0" width="290" height="130"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="130" id="go3-WE-W6C"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="17"/>
+                                        <textInputTraits key="textInputTraits" autocapitalizationType="sentences"/>
+                                        <userDefinedRuntimeAttributes>
+                                            <userDefinedRuntimeAttribute type="string" keyPath="placeholder" value="分享新鲜事..."/>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="maxHeight">
+                                                <real key="value" value="99999999"/>
+                                            </userDefinedRuntimeAttribute>
+                                            <userDefinedRuntimeAttribute type="number" keyPath="minHeight">
+                                                <real key="value" value="80"/>
+                                            </userDefinedRuntimeAttribute>
+                                        </userDefinedRuntimeAttributes>
+                                        <connections>
+                                            <outlet property="delegate" destination="SkV-Cq-lma" id="k7c-23-fk7"/>
+                                        </connections>
+                                    </textView>
+                                </subviews>
+                                <constraints>
+                                    <constraint firstItem="oBh-HI-JN0" firstAttribute="top" secondItem="V2N-Mj-fqZ" secondAttribute="top" id="Neo-es-8CI"/>
+                                    <constraint firstAttribute="trailing" secondItem="oBh-HI-JN0" secondAttribute="trailing" constant="15" id="OoK-uE-n4x"/>
+                                    <constraint firstAttribute="bottom" secondItem="9Lx-DB-OJe" secondAttribute="bottom" constant="10" id="RHy-NO-B8h"/>
+                                    <constraint firstItem="oBh-HI-JN0" firstAttribute="leading" secondItem="V2N-Mj-fqZ" secondAttribute="leading" constant="15" id="vow-W8-fzf"/>
+                                    <constraint firstItem="9Lx-DB-OJe" firstAttribute="top" secondItem="oBh-HI-JN0" secondAttribute="bottom" constant="25" id="zrJ-Db-2O4"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="delegate" destination="Ewp-b8-lQf" id="wTK-n7-GTh"/>
+                                    <outletCollection property="gestureRecognizers" destination="VgB-Nm-8Ch" appends="YES" id="7LO-hu-f7I"/>
+                                </connections>
+                            </scrollView>
+                            <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="RBL-rK-Hgs" customClass="TaoComposeKeyBoardToolBar">
+                                <rect key="frame" x="0.0" y="400" width="320" height="80"/>
+                                <subviews>
+                                    <view contentMode="scaleToFill" translatesAutoresizingMaskIntoConstraints="NO" id="1uE-rQ-re3" userLabel="toolBar">
+                                        <rect key="frame" x="0.0" y="36" width="320" height="44"/>
+                                        <subviews>
+                                            <button opaque="NO" tag="1" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="KiS-Mt-WIS" userLabel="@">
+                                                <rect key="frame" x="64" y="0.0" width="64" height="44"/>
+                                                <state key="normal" image="compose_mentionbutton_background"/>
+                                                <state key="highlighted" image="compose_mentionbutton_background_highlighted"/>
+                                            </button>
+                                            <button opaque="NO" tag="2" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="toY-tE-fo4" userLabel="#">
+                                                <rect key="frame" x="128" y="0.0" width="64" height="44"/>
+                                                <state key="normal" image="compose_trendbutton_background"/>
+                                                <state key="highlighted" image="compose_trendbutton_background_highlighted"/>
+                                            </button>
+                                            <button opaque="NO" tag="3" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="n8W-4R-os4" userLabel="emotion">
+                                                <rect key="frame" x="192" y="0.0" width="64" height="44"/>
+                                                <state key="normal" image="compose_emoticonbutton_background"/>
+                                                <state key="highlighted" image="compose_emoticonbutton_background_highlighted"/>
+                                                <connections>
+                                                    <action selector="toolBarClick:" destination="RBL-rK-Hgs" eventType="touchUpInside" id="J8h-ab-WEf"/>
+                                                </connections>
+                                            </button>
+                                            <button opaque="NO" tag="4" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="l7l-Oa-Mbk" userLabel="+">
+                                                <rect key="frame" x="256" y="0.0" width="64" height="44"/>
+                                                <state key="normal" image="message_add_background"/>
+                                                <state key="highlighted" image="message_add_background_highlighted"/>
+                                            </button>
+                                            <button opaque="NO" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="Zb3-hT-1sR" userLabel="相册">
+                                                <rect key="frame" x="0.0" y="0.0" width="64" height="44"/>
+                                                <constraints>
+                                                    <constraint firstAttribute="height" constant="44" id="OnK-FC-zQI"/>
+                                                </constraints>
+                                                <state key="normal" image="compose_toolbar_picture"/>
+                                                <state key="highlighted" image="compose_toolbar_picture_highlighted"/>
+                                            </button>
+                                        </subviews>
+                                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                                        <constraints>
+                                            <constraint firstItem="KiS-Mt-WIS" firstAttribute="top" secondItem="Zb3-hT-1sR" secondAttribute="top" id="3zb-O0-ukB"/>
+                                            <constraint firstItem="KiS-Mt-WIS" firstAttribute="height" secondItem="Zb3-hT-1sR" secondAttribute="height" id="4Hf-2L-Zsh"/>
+                                            <constraint firstItem="l7l-Oa-Mbk" firstAttribute="height" secondItem="Zb3-hT-1sR" secondAttribute="height" id="A51-nw-s9R"/>
+                                            <constraint firstItem="toY-tE-fo4" firstAttribute="height" secondItem="Zb3-hT-1sR" secondAttribute="height" id="ATp-eG-vIz"/>
+                                            <constraint firstItem="n8W-4R-os4" firstAttribute="top" secondItem="Zb3-hT-1sR" secondAttribute="top" id="Jc7-HN-vpZ"/>
+                                            <constraint firstItem="KiS-Mt-WIS" firstAttribute="width" secondItem="Zb3-hT-1sR" secondAttribute="width" id="Jh4-m3-0bg"/>
+                                            <constraint firstItem="n8W-4R-os4" firstAttribute="height" secondItem="Zb3-hT-1sR" secondAttribute="height" id="ORM-f0-IGr"/>
+                                            <constraint firstItem="KiS-Mt-WIS" firstAttribute="leading" secondItem="Zb3-hT-1sR" secondAttribute="trailing" id="SkW-pf-E9U"/>
+                                            <constraint firstItem="KiS-Mt-WIS" firstAttribute="bottom" secondItem="Zb3-hT-1sR" secondAttribute="bottom" id="VaH-nz-TlT"/>
+                                            <constraint firstAttribute="trailing" secondItem="l7l-Oa-Mbk" secondAttribute="trailing" id="Wez-A9-lhI"/>
+                                            <constraint firstAttribute="bottom" secondItem="Zb3-hT-1sR" secondAttribute="bottom" id="Ws6-3c-5Tu"/>
+                                            <constraint firstItem="toY-tE-fo4" firstAttribute="leading" secondItem="KiS-Mt-WIS" secondAttribute="trailing" id="YMt-L8-WbJ"/>
+                                            <constraint firstItem="n8W-4R-os4" firstAttribute="bottom" secondItem="Zb3-hT-1sR" secondAttribute="bottom" id="ZBZ-Yr-QZx"/>
+                                            <constraint firstItem="toY-tE-fo4" firstAttribute="centerX" secondItem="1uE-rQ-re3" secondAttribute="centerX" id="Zbo-fq-98P"/>
+                                            <constraint firstAttribute="height" constant="44" id="a3P-hf-4yF"/>
+                                            <constraint firstItem="Zb3-hT-1sR" firstAttribute="top" secondItem="1uE-rQ-re3" secondAttribute="top" id="aOS-uB-M6o"/>
+                                            <constraint firstItem="l7l-Oa-Mbk" firstAttribute="width" secondItem="Zb3-hT-1sR" secondAttribute="width" id="aPX-su-oBQ"/>
+                                            <constraint firstItem="toY-tE-fo4" firstAttribute="top" secondItem="Zb3-hT-1sR" secondAttribute="top" id="bCB-dU-F8I"/>
+                                            <constraint firstItem="l7l-Oa-Mbk" firstAttribute="bottom" secondItem="Zb3-hT-1sR" secondAttribute="bottom" id="bOP-8v-zOM"/>
+                                            <constraint firstItem="toY-tE-fo4" firstAttribute="bottom" secondItem="Zb3-hT-1sR" secondAttribute="bottom" id="c9k-TJ-Zx7"/>
+                                            <constraint firstItem="l7l-Oa-Mbk" firstAttribute="leading" secondItem="n8W-4R-os4" secondAttribute="trailing" id="dtP-rE-V1U"/>
+                                            <constraint firstItem="n8W-4R-os4" firstAttribute="leading" secondItem="toY-tE-fo4" secondAttribute="trailing" id="fXh-CS-eaM"/>
+                                            <constraint firstItem="toY-tE-fo4" firstAttribute="width" secondItem="Zb3-hT-1sR" secondAttribute="width" id="m7l-38-7zA"/>
+                                            <constraint firstItem="n8W-4R-os4" firstAttribute="width" secondItem="Zb3-hT-1sR" secondAttribute="width" id="sYv-hy-BUs"/>
+                                            <constraint firstItem="Zb3-hT-1sR" firstAttribute="leading" secondItem="1uE-rQ-re3" secondAttribute="leading" id="syR-Eg-oYl"/>
+                                            <constraint firstItem="l7l-Oa-Mbk" firstAttribute="top" secondItem="Zb3-hT-1sR" secondAttribute="top" id="yCF-5a-a2U"/>
+                                        </constraints>
+                                    </view>
+                                    <button opaque="NO" tag="5" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="ypH-wf-GYD" userLabel="显示位置">
+                                        <rect key="frame" x="5" y="5" width="88" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="width" constant="88" id="EAp-ep-2T7"/>
+                                            <constraint firstAttribute="height" constant="26" id="z8B-xM-Uor"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="显示位置" image="compose_locatebutton_ready">
+                                            <color key="titleColor" red="0.57647058823529407" green="0.57647058823529407" blue="0.57647058823529407" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="toolBarClick:" destination="RBL-rK-Hgs" eventType="touchUpInside" id="39p-cc-8Dp"/>
+                                        </connections>
+                                    </button>
+                                    <button opaque="NO" tag="6" contentMode="scaleToFill" contentHorizontalAlignment="center" contentVerticalAlignment="center" lineBreakMode="middleTruncation" translatesAutoresizingMaskIntoConstraints="NO" id="9m1-gU-UQU" userLabel="公开">
+                                        <rect key="frame" x="253" y="5" width="62" height="26"/>
+                                        <constraints>
+                                            <constraint firstAttribute="height" constant="26" id="5uM-cI-SLc"/>
+                                            <constraint firstAttribute="width" constant="62" id="llx-IT-2gr"/>
+                                        </constraints>
+                                        <fontDescription key="fontDescription" type="system" pointSize="14"/>
+                                        <state key="normal" title="公开" image="compose_publicbutton">
+                                            <color key="titleColor" red="0.32156862749999998" green="0.4941176471" blue="0.67843137249999996" alpha="1" colorSpace="calibratedRGB"/>
+                                        </state>
+                                        <connections>
+                                            <action selector="toolBarClick:" destination="RBL-rK-Hgs" eventType="touchUpInside" id="LjC-uv-nM4"/>
+                                        </connections>
+                                    </button>
+                                </subviews>
+                                <color key="backgroundColor" white="1" alpha="1" colorSpace="custom" customColorSpace="calibratedWhite"/>
+                                <constraints>
+                                    <constraint firstAttribute="trailing" secondItem="1uE-rQ-re3" secondAttribute="trailing" id="SjD-vF-8Q6"/>
+                                    <constraint firstItem="9m1-gU-UQU" firstAttribute="bottom" secondItem="ypH-wf-GYD" secondAttribute="bottom" id="cCw-zJ-ySh"/>
+                                    <constraint firstItem="1uE-rQ-re3" firstAttribute="leading" secondItem="RBL-rK-Hgs" secondAttribute="leading" id="d4z-7R-Ivq"/>
+                                    <constraint firstItem="ypH-wf-GYD" firstAttribute="leading" secondItem="RBL-rK-Hgs" secondAttribute="leading" constant="5" id="h6w-MC-uQ4"/>
+                                    <constraint firstItem="9m1-gU-UQU" firstAttribute="height" secondItem="ypH-wf-GYD" secondAttribute="height" id="hVe-VZ-QYe"/>
+                                    <constraint firstItem="1uE-rQ-re3" firstAttribute="top" secondItem="ypH-wf-GYD" secondAttribute="bottom" constant="5" id="jST-Th-ckn"/>
+                                    <constraint firstItem="9m1-gU-UQU" firstAttribute="top" secondItem="ypH-wf-GYD" secondAttribute="top" id="pch-wo-noV"/>
+                                    <constraint firstAttribute="trailing" secondItem="9m1-gU-UQU" secondAttribute="trailing" constant="5" id="sxx-Ck-HsX"/>
+                                    <constraint firstAttribute="bottom" secondItem="1uE-rQ-re3" secondAttribute="bottom" id="vAQ-SF-RcJ"/>
+                                    <constraint firstItem="ypH-wf-GYD" firstAttribute="top" secondItem="RBL-rK-Hgs" secondAttribute="top" constant="5" id="vAg-u7-0xO"/>
+                                </constraints>
+                                <connections>
+                                    <outlet property="Public" destination="9m1-gU-UQU" id="u5X-Gf-aCf"/>
+                                    <outlet property="delegate" destination="Ewp-b8-lQf" id="xbd-lZ-WLV"/>
+                                    <outlet property="emotionBtn" destination="n8W-4R-os4" id="TT2-T7-bIv"/>
+                                    <outlet property="locationBtn" destination="ypH-wf-GYD" id="zc9-86-XoO"/>
+                                    <outlet property="toolBar" destination="1uE-rQ-re3" id="KPx-fc-EOn"/>
+                                </connections>
+                            </view>
+                        </subviews>
+                        <color key="backgroundColor" white="1" alpha="1" colorSpace="calibratedWhite"/>
+                        <constraints>
+                            <constraint firstAttribute="trailing" secondItem="oBh-HI-JN0" secondAttribute="trailing" constant="15" id="2ad-ei-CiP"/>
+                            <constraint firstAttribute="trailing" secondItem="9Lx-DB-OJe" secondAttribute="trailing" constant="15" id="7Tu-yH-Ti5"/>
+                            <constraint firstAttribute="trailing" secondItem="V2N-Mj-fqZ" secondAttribute="trailing" id="99g-gW-Gri"/>
+                            <constraint firstItem="ASc-cf-1CS" firstAttribute="top" secondItem="V2N-Mj-fqZ" secondAttribute="bottom" constant="80" id="F5s-JT-2Sp"/>
+                            <constraint firstAttribute="trailing" secondItem="RBL-rK-Hgs" secondAttribute="trailing" id="VEx-JE-yMS"/>
+                            <constraint firstAttribute="bottom" secondItem="V2N-Mj-fqZ" secondAttribute="bottom" constant="80" id="Y1d-zz-OYQ"/>
+                            <constraint firstItem="oBh-HI-JN0" firstAttribute="leading" secondItem="nNb-qg-h2N" secondAttribute="leading" constant="15" id="eZv-Tf-yRj"/>
+                            <constraint firstItem="9Lx-DB-OJe" firstAttribute="leading" secondItem="nNb-qg-h2N" secondAttribute="leading" constant="15" id="hzy-ld-dPv"/>
+                            <constraint firstItem="V2N-Mj-fqZ" firstAttribute="leading" secondItem="nNb-qg-h2N" secondAttribute="leading" id="oEd-Z8-n4e"/>
+                            <constraint firstItem="V2N-Mj-fqZ" firstAttribute="top" secondItem="nhq-vL-3h7" secondAttribute="bottom" id="wHf-Mk-i4F"/>
+                            <constraint firstItem="RBL-rK-Hgs" firstAttribute="leading" secondItem="nNb-qg-h2N" secondAttribute="leading" id="xB4-nM-prt"/>
+                            <constraint firstAttribute="bottom" secondItem="RBL-rK-Hgs" secondAttribute="bottom" id="zpC-BW-O0v"/>
+                        </constraints>
+                        <variation key="default">
+                            <mask key="constraints">
+                                <exclude reference="F5s-JT-2Sp"/>
+                            </mask>
+                        </variation>
+                    </view>
+                    <navigationItem key="navigationItem" id="ViY-U2-Iey"/>
+                    <simulatedScreenMetrics key="simulatedDestinationMetrics"/>
+                    <connections>
+                        <outlet property="composeTextView" destination="oBh-HI-JN0" id="f7c-yx-haF"/>
+                        <outlet property="keyBoardToolBar" destination="RBL-rK-Hgs" id="cza-eU-L65"/>
+                        <outlet property="layout" destination="DQ8-D0-ZrU" id="jlS-95-wAS"/>
+                        <outlet property="pictureCollectionView" destination="9Lx-DB-OJe" id="a1p-F2-1Kp"/>
+                        <outlet property="pictureCollectionViewHeight" destination="8Vn-R2-5b0" id="wNU-gW-AQW"/>
+                    </connections>
+                </viewController>
+                <placeholder placeholderIdentifier="IBFirstResponder" id="R2C-jK-sGo" userLabel="First Responder" sceneMemberID="firstResponder"/>
+                <tapGestureRecognizer id="VgB-Nm-8Ch">
+                    <connections>
+                        <action selector="ContainerTap:" destination="Ewp-b8-lQf" id="JJT-Ql-YTa"/>
+                    </connections>
+                </tapGestureRecognizer>
+                <customObject id="SkV-Cq-lma" customClass="TaoComposeTextViewManager">
+                    <connections>
+                        <outlet property="Container" destination="V2N-Mj-fqZ" id="ueB-Q7-2YB"/>
+                        <outlet property="inputBarBottomConstraint" destination="zpC-BW-O0v" id="IfM-4f-vW7"/>
+                        <outlet property="inputView" destination="RBL-rK-Hgs" id="dNo-Rt-Wg7"/>
+                    </connections>
+                </customObject>
+            </objects>
+            <point key="canvasLocation" x="147" y="-39"/>
+        </scene>
+    </scenes>
+    <resources>
+        <image name="compose_emoticonbutton_background" width="24" height="24"/>
+        <image name="compose_emoticonbutton_background_highlighted" width="24" height="24"/>
+        <image name="compose_locatebutton_ready" width="20" height="20"/>
+        <image name="compose_mentionbutton_background" width="24" height="24"/>
+        <image name="compose_mentionbutton_background_highlighted" width="24" height="24"/>
+        <image name="compose_publicbutton" width="20" height="20"/>
+        <image name="compose_toolbar_picture" width="24" height="24"/>
+        <image name="compose_toolbar_picture_highlighted" width="24" height="24"/>
+        <image name="compose_trendbutton_background" width="24" height="24"/>
+        <image name="compose_trendbutton_background_highlighted" width="24" height="24"/>
+        <image name="message_add_background" width="30" height="30"/>
+        <image name="message_add_background_highlighted" width="30" height="30"/>
+    </resources>
+</document>

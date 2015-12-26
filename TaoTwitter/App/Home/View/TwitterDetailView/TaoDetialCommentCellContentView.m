@@ -8,13 +8,14 @@
 
 #import <Masonry.h>
 #import "TaoDetialCommentCellContentView.h"
+#import "TaoTwitterTextLable.h"
 
 @interface TaoDetialCommentCellContentView ()
 @property (strong, nonatomic)  UIImageView *userImage;
 @property (strong, nonatomic)  UILabel *userName;
 @property (strong, nonatomic)  UIImageView *vipImage;
 @property (strong, nonatomic)  UILabel *time;
-@property (strong, nonatomic)  UILabel *statues;
+@property (strong, nonatomic)  TaoTwitterTextLable *statues;
 @property (nonatomic, strong)  UIImageView *like;
 
 @end
@@ -78,9 +79,9 @@
     return _time;
 }
 
-- (UILabel *)statues {
+- (TaoTwitterTextLable *)statues {
     if (!_statues) {
-        _statues = [[UILabel alloc] init];
+        _statues = [[TaoTwitterTextLable alloc] init];
         _statues.numberOfLines = 0;
         _statues.font = [UIFont systemFontOfSize:14];
         _statues.textColor = [UIColor tao_textLableColor];
@@ -121,6 +122,6 @@
     
     self.userName.text = comment.user.name;
     self.time.text = [NSString changeTimeWithTimeString:comment.created_at];
-    self.statues.text = comment.text;
+//    self.statues.attributedText = [self.statues attributedTextWithText:comment.text];
 }
 @end
