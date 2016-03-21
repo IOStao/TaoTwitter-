@@ -15,4 +15,5 @@
 + (instancetype)shared;
 
 - (NSAttributedString *)attributedTextWithText:(NSString *)text font:(UIFont *)font;
+- (NSAttributedString *)pastAttributedTextWithText:(NSString *)text font:(UIFont *)font;
 @end

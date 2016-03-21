@@ -12,7 +12,17 @@
 
 @implementation TaoTwitterTextLable
 
-
+- (instancetype)init
+{
+    self = [super init];
+    if (self) {
+        self.ignoreCommonProperties = YES;
+        self.displaysAsynchronously = YES;
+        self.fadeOnAsynchronouslyDisplay = NO;
+        self.fadeOnHighlight = NO;
+    }
+    return self;
+}
 
 
 @end

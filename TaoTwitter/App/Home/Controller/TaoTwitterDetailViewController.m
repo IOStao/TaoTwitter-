@@ -29,6 +29,7 @@
     [super viewDidLoad];
     [self configureTbaleView];
     [self configureHead];
+    self.tableView.tableFooterView = [[UIView alloc] init];
 }
 
 - (void)configureSelf {
@@ -93,8 +94,8 @@
     }else {
         rows =  50;
     }
-    self.tableView.infiniteScrollingView.enabled = rows>20?YES:NO;
-    return rows + 12;
+//    self.tableView.infiniteScrollingView.enabled = rows>20?YES:NO;
+    return rows;
 }
 
 - (UITableViewCell *)tableView:(UITableView *)tableView cellForRowAtIndexPath:(NSIndexPath *)indexPath {
@@ -125,14 +126,14 @@
     
     if (self.headerView.type == TaoTwitterDetailHeaderViewTypeComment) {
         if (indexPath.row < self.viewModel.comments.count) {
-        return [tableView fd_heightForCellWithIdentifier:CommentdIdentifier configuration:^(TaoDetialTwitterCommentTableViewCell *cell) {
+        return [tableView fd_heightForCellWithIdentifier:CommentdIdentifier cacheByIndexPath:indexPath configuration:^(TaoDetialTwitterCommentTableViewCell *cell) {
             cell.comment = _viewModel.comments[indexPath.row];
         }];}else {
             return 50;
         }
     }else if (self.headerView.type == TaoTwitterDetailHeaderViewTypeRetweeted) {
         if (indexPath.row < self.viewModel.reposts.count) {
-            return [tableView fd_heightForCellWithIdentifier:CommentdIdentifier configuration:^(TaoDetialTwitterRepostTableViewCell *cell) {
+            return [tableView fd_heightForCellWithIdentifier:CommentdIdentifier cacheByIndexPath:indexPath configuration:^(TaoDetialTwitterRepostTableViewCell *cell) {
                 cell.twitter = _viewModel.reposts[indexPath.row];
             }];
         }else {
@@ -195,6 +196,8 @@
                     weakSelf.twitter.comments_count = weakSelf.viewModel.totlaNumber;
                     weakSelf.headerView.twitter = weakSelf.twitter;
                     break;
+                default:
+                    break;
             }
             [weakSelf.tableView reloadData];
         }
@@ -215,4 +218,5 @@
         [weakSelf.tableView finishPullup];
     } parameters:dict];
 }
+
 @end

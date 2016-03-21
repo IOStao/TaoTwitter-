@@ -9,13 +9,15 @@
 #import <Masonry.h>
 #import "TaoDetialCommentCellContentView.h"
 #import "TaoTwitterTextLable.h"
+#import <YYWebImage/YYWebImage.h>
+#import "TaoTwitterTextLableRegexKitLiteTool.h"
 
 @interface TaoDetialCommentCellContentView ()
 @property (strong, nonatomic)  UIImageView *userImage;
 @property (strong, nonatomic)  UILabel *userName;
 @property (strong, nonatomic)  UIImageView *vipImage;
 @property (strong, nonatomic)  UILabel *time;
-@property (strong, nonatomic)  TaoTwitterTextLable *statues;
+@property (strong, nonatomic)  UILabel *statues;
 @property (nonatomic, strong)  UIImageView *like;
 
 @end
@@ -79,9 +81,9 @@
     return _time;
 }
 
-- (TaoTwitterTextLable *)statues {
+- (UILabel *)statues {
     if (!_statues) {
-        _statues = [[TaoTwitterTextLable alloc] init];
+        _statues = [[UILabel alloc] init];
         _statues.numberOfLines = 0;
         _statues.font = [UIFont systemFontOfSize:14];
         _statues.textColor = [UIColor tao_textLableColor];
@@ -104,7 +106,8 @@
     [self time];
     [self statues];
     
-    [self.userImage sd_setImageWithURL:[NSURL URLWithString:comment.user.avatar_hd] placeholderImage:[UIImage imageNamed:@"avatar_default_small"] options:SDWebImageLowPriority];
+
+    [self.userImage yy_setImageWithURL:[NSURL URLWithString:comment.user.avatar_hd] placeholder:[UIImage imageNamed:@"avatar_default_small"]];
     self.userImage.clipsToBounds = YES;
     self.userImage.layer.cornerRadius = 20;
     
@@ -122,6 +125,6 @@
     
     self.userName.text = comment.user.name;
     self.time.text = [NSString changeTimeWithTimeString:comment.created_at];
-//    self.statues.attributedText = [self.statues attributedTextWithText:comment.text];
+    self.statues.attributedText = [[TaoTwitterTextLableRegexKitLiteTool shared]pastAttributedTextWithText:comment.text font:self.statues.font];
 }
 @end

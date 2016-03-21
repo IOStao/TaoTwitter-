@@ -12,6 +12,9 @@
 #import "TaoDetialRecommendView.h"
 #import <Masonry.h>
 
+#import "TaoStatuesViewLayout.h"
+#import "TaoRStatuesViewLayout.h"
+
 @interface TaoTwitterDetailHeaderView ()
 @property (nonatomic, strong)  TaoTwitterStatusView *statusView;
 @property (nonatomic, strong)  TaoTwitterRStatusView *rStatusView;
@@ -27,9 +30,6 @@
     if (!_statusView) {
         _statusView = [[TaoTwitterStatusView alloc]init];
         [self.backGroundView addSubview:_statusView];
-        [_statusView mas_makeConstraints:^(MASConstraintMaker *make) {
-            make.left.right.top.equalTo(@(0));
-        }];
     }
     return _statusView;
 }
@@ -84,18 +84,28 @@
     _twitter = twitter;
     
     [self statusView];
-    [self rStatusView];
-    [self detialRecommendView];
-    [self line];
-//    self.statusView.twitter = twitter;
+    TaoStatuesViewLayout *statuesLayout = [[TaoStatuesViewLayout alloc] init];
+    statuesLayout.twitter = twitter;
+    self.statusView.statuesViewLayout = statuesLayout;
+    
+    [_statusView mas_makeConstraints:^(MASConstraintMaker *make) {
+        make.left.right.top.equalTo(@(0));
+        make.height.equalTo(@(_statusView.statuesViewLayout.statuesViewHeight)).priorityHigh();
+    }];
+
     
     if (twitter.retweeted_status) {
+        [self rStatusView];
         self.rStatusView.hidden = NO;
-//        self.rStatusView.twitter = twitter.retweeted_status;
+        TaoRStatuesViewLayout *rstatuesLayout = [[TaoRStatuesViewLayout alloc] init];
+        rstatuesLayout.rtwitter = twitter.retweeted_status;
+        self.rStatusView.rStatuesViewLayout = rstatuesLayout;
+        
         [_rStatusView mas_remakeConstraints:^(MASConstraintMaker *make) {
             make.top.equalTo(self.statusView.mas_bottom).offset(10);
             make.left.right.equalTo(@(0));
             make.bottom.equalTo(@(-5)).priorityHigh();
+            make.height.equalTo(@(self.rStatusView.rStatuesViewLayout.rStatuesViewHeight)).priorityHigh();
             
         }];
     } else {
@@ -106,6 +116,9 @@
             make.bottom.equalTo(@(-5)).priorityHigh();
         }];
     }
+    
+    [self detialRecommendView];
+    [self line];
     
 }
 

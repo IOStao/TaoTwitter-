@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-//@class YYTextLayout;
+@class YYTextLayout,TaoTwitterPicturesLayout;
 
 @interface TaoRStatuesViewLayout : NSObject
 @property (nonatomic, strong) Taostatus *rtwitter;
@@ -15,5 +15,7 @@
 @property (nonatomic, assign) CGRect     leftLineFrame;
 @property (nonatomic, assign) CGRect     rphotosViewFrame;
 @property (nonatomic, assign) CGFloat     rStatuesViewHeight;
-@property (copy,nonatomic) NSAttributedString *rStatus;
+
+@property (strong,nonatomic) YYTextLayout *rStatuesLayout;
+@property (strong,nonatomic) TaoTwitterPicturesLayout *rPictureLayout;
 @end

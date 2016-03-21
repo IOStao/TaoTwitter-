@@ -8,6 +8,7 @@
 
 #import "TaoTwitterUserImage.h"
 #import <Masonry/Masonry.h>
+#import <YYWebImage/YYWebImage.h>
 
 @interface TaoTwitterUserImage ()
 @property (nonatomic, weak) UIImageView *userimageView;
@@ -46,7 +47,8 @@
     _user = user;
     
     // 1.下载图片
-    [self.userimageView sd_setImageWithURL:[NSURL URLWithString:user.avatar_hd] placeholderImage:[UIImage imageNamed:@"avatar_default_small"] options:SDWebImageLowPriority];
+    
+    [self.userimageView yy_setImageWithURL:[NSURL URLWithString:user.avatar_hd] placeholder:[UIImage imageNamed:@"avatar_default_small"]];
     self.userimageView.clipsToBounds = YES;
     self.userimageView.layer.cornerRadius = 20;
     self.userimageView.layer.borderColor = [UIColor orangeColor].CGColor;

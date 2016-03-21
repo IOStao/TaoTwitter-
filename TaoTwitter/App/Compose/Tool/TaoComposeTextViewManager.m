@@ -81,7 +81,7 @@
 }
 
 - (void)textViewDidChange:(UITextView *)textView{
-    textView.attributedText =[[[TaoComposeTextLableRegexKitLiteTool shared]attributedTextWithText:textView.text attributedText:textView.attributedText font:textView.font]copy];
+    textView.attributedText =[[TaoComposeTextLableRegexKitLiteTool shared]attributedTextWithText:textView.text attributedText:textView.attributedText font:textView.font];
     [self adjustTextViewSelectRangePositionWithTextView:textView];
 }
 

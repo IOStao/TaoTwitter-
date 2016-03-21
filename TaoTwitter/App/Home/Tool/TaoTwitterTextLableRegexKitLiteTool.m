@@ -12,6 +12,7 @@
 #import "TaoTwitterTextPart.h"
 #import "TaoComposeEmotionPlistTool.h"
 #import "TaoComposeEmotionModel.h"
+#import <YYText/YYText.h>
 
 // 表情的规则
 static NSString const * emotionPattern = @"\\[[^ \\[\\]]+?\\]";
@@ -105,6 +106,72 @@ static TaoTwitterTextLableRegexKitLiteTool *_TaoTwitterTextLableRegexKitLiteTool
     NSMutableArray *parts = [self checkAttributedStringWithText: text];
     
     for (TaoTwitterTextPart *part in parts) {
+
+        
+        switch (part.specialtype) {
+            case  textTypeAt:
+            case  textTypeTopic:{
+                substr = [[NSAttributedString alloc] initWithString:part.text attributes:@{
+                                                                                           NSForegroundColorAttributeName
+                                                                                           : [UIColor tao_foregroundColor]
+                                                                                           
+                                                                                           }];
+                
+                
+            }
+                
+                break;
+                
+            case textTypeEmotion: {
+                NSString *emotionName = [[TaoComposeEmotionPlistTool standard] emotionWithChs:part.text].png ;
+                if (emotionName) {
+                    substr = [NSAttributedString yy_attachmentStringWithEmojiImage:[UIImage imageNamed:emotionName] fontSize:15];
+                }else {
+                    substr = [[NSAttributedString alloc] initWithString:part.text];
+                }
+            }
+                break;
+            case urlTypeWeb: {
+
+                NSMutableAttributedString *textA = [NSMutableAttributedString yy_attachmentStringWithContent:[UIImage imageNamed:@"timeline_card_small_web"] contentMode:UIViewContentModeCenter attachmentSize:CGSizeMake(14, 14) alignToFont:font alignment:YYTextVerticalAlignmentCenter];
+                NSAttributedString *a = [[NSAttributedString alloc] initWithString:@"网页链接" attributes:@{
+                                                                                                        NSForegroundColorAttributeName
+                                                                                                        : [UIColor tao_foregroundColor]
+                                                                                                        
+                                                                                                        
+                                                                                                        }];
+                [textA appendAttributedString:a];
+                substr = textA;
+            }
+                break;
+            case textNormole: {
+                substr = [[[NSAttributedString alloc] initWithString:part.text]mutableCopy];
+            }
+                break;
+            default:
+                break;
+        }
+        [attributedText appendAttributedString:substr];
+        
+    }
+    
+    
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    style.lineSpacing = 4;
+    
+    [attributedText addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, attributedText.length)];
+    [attributedText addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, attributedText.length)];
+    
+    return [attributedText copy];
+}
+
+- (NSAttributedString *)pastAttributedTextWithText:(NSString *)text font:(UIFont *)font {
+    NSMutableAttributedString *attributedText = [[NSMutableAttributedString alloc] init];
+    NSAttributedString *substr = nil;
+    
+    NSMutableArray *parts = [self checkAttributedStringWithText: text];
+    
+    for (TaoTwitterTextPart *part in parts) {
         NSTextAttachment *attch = [[NSTextAttachment alloc] init];
         
         switch (part.specialtype) {
@@ -147,65 +214,10 @@ static TaoTwitterTextLableRegexKitLiteTool *_TaoTwitterTextLableRegexKitLiteTool
                 substr = textA;
             }
                 break;
-            case urlTypeVideo: {
-                attch.image  = [UIImage imageNamed:@"timeline_card_small_video"];
-                attch.bounds = CGRectMake(0, -3, font.lineHeight, font.lineHeight);
-                NSMutableAttributedString *textA = (NSMutableAttributedString *)[NSMutableAttributedString attributedStringWithAttachment:attch];
-                [textA addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(0, textA.length)];
-                NSAttributedString *a = [[NSAttributedString alloc] initWithString:@"网页链接" attributes:@{
-                                                                                                        NSForegroundColorAttributeName
-                                                                                                        : [UIColor tao_foregroundColor]
-                                                                                                        
-                                                                                                        }];
-                [textA appendAttributedString:a];
-                substr = [textA mutableCopy];
-            }
-                break;
-            case urlTypeMusic: {
-                attch.image  = [UIImage imageNamed:@"timeline_card_small_web"];
-                attch.bounds = CGRectMake(0, -3, font.lineHeight, font.lineHeight);
-                NSMutableAttributedString *textA = (NSMutableAttributedString *)[NSMutableAttributedString attributedStringWithAttachment:attch];
-                [textA addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(0, textA.length)];
-                NSAttributedString *a = [[NSAttributedString alloc] initWithString:@"音乐" attributes:@{
-                                                                                                      NSForegroundColorAttributeName
-                                                                                                      : [UIColor tao_foregroundColor]
-                                                                                                      
-                                                                                                      }];
-                [textA appendAttributedString:a];
-                substr = [textA mutableCopy];
-            }
-                break;
-            case urlTypeActivity: {
-                attch.image  = [UIImage imageNamed:@"timeline_card_small_web"];
-                attch.bounds = CGRectMake(0, -3, font.lineHeight, font.lineHeight);
-                NSMutableAttributedString *textA = (NSMutableAttributedString *)[NSMutableAttributedString attributedStringWithAttachment:attch];
-                [textA addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(0, textA.length)];
-                NSAttributedString *a = [[NSAttributedString alloc] initWithString:@"活动" attributes:@{
-                                                                                                      NSForegroundColorAttributeName
-                                                                                                      : [UIColor tao_foregroundColor]
-                                                                                                      
-                                                                                                      }];
-                [textA appendAttributedString:a];
-                substr = [textA mutableCopy];
-            }
-                break;
-            case urlTypeVote: {
-                attch.image  = [UIImage imageNamed:@"timeline_card_small_web"];
-                attch.bounds = CGRectMake(0, -3, font.lineHeight, font.lineHeight);
-                NSMutableAttributedString *textA = (NSMutableAttributedString *)[NSMutableAttributedString attributedStringWithAttachment:attch];
-                [textA addAttribute:NSFontAttributeName value:[UIFont systemFontOfSize:12] range:NSMakeRange(0, textA.length)];
-                NSAttributedString *a = [[NSAttributedString alloc] initWithString:@"投票" attributes:@{
-                                                                                                      NSForegroundColorAttributeName
-                                                                                                      : [UIColor tao_foregroundColor]
-                                                                                                      
-                                                                                                      }];
-                [textA appendAttributedString:a];
-                substr = [textA mutableCopy];
-                
-            }
             case textNormole: {
                 substr = [[[NSAttributedString alloc] initWithString:part.text]mutableCopy];
             }
+                break;
             default:
                 break;
         }
@@ -214,20 +226,9 @@ static TaoTwitterTextLableRegexKitLiteTool *_TaoTwitterTextLableRegexKitLiteTool
     }
     
     
-    
     [attributedText addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, attributedText.length)];
     
     return [attributedText copy];
 }
 
-- (urlType)TypeWithShortUrl:(NSString *)shortUrl {
-   __block urlType type;
-    [[TaoNetManager sharedInstance]requestWithPath:shortUrl parameters:nil completion:^(NSError *error, Taourls *resultObject) {
-        if (error) {
-            type = urlTypeWeb;
-        }else {
-            type = [[resultObject.urls objectAtIndex:0]integerValue];}
-    }];
-    return type;
-}
 @end

@@ -126,7 +126,10 @@ static TaoComposeTextLableRegexKitLiteTool *_TaoComposeTextLableRegexKitLiteTool
         }
         
     }
+    NSMutableParagraphStyle *style = [[NSParagraphStyle defaultParagraphStyle] mutableCopy];
+    style.lineSpacing = 3;
     
+    [newAttributedText addAttribute:NSParagraphStyleAttributeName value:style range:NSMakeRange(0, newAttributedText.length)];
      [newAttributedText addAttribute:NSFontAttributeName value:font range:NSMakeRange(0, newAttributedText.length)];
     return [newAttributedText copy];
 }

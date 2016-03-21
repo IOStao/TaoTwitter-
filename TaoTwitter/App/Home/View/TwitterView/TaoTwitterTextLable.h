@@ -6,11 +6,11 @@
 //  Copyright © 2015年 Baidu. All rights reserved.
 //
 
-#import <UIKit/UIKit.h>
+#import <YYText/YYLabel.h>
 
 
 
-@interface TaoTwitterTextLable : UILabel
+@interface TaoTwitterTextLable : YYLabel
 
 @end
 

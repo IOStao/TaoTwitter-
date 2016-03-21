@@ -7,7 +7,7 @@
 //
 
 #import <Foundation/Foundation.h>
-//@class YYTextLayout;
+@class YYTextLayout,TaoTwitterPicturesLayout;
 
 @interface TaoStatuesViewLayout : NSObject
 
@@ -20,8 +20,11 @@
 @property (nonatomic, assign) CGRect     statuesFrame;
 @property (nonatomic, assign) CGRect     photosViewFrame;
 @property (nonatomic, assign) CGFloat    statuesViewHeight;
-@property (copy,nonatomic) NSAttributedString *status;
-@property (copy,nonatomic) NSString *userName;
-@property (copy,nonatomic) NSString *time;
-@property (copy,nonatomic) NSString *device;
+
+
+@property (strong,nonatomic) YYTextLayout *userNameLayout;
+@property (strong,nonatomic) YYTextLayout *timeLayout;
+@property (strong,nonatomic) YYTextLayout *deviceLayout;
+@property (strong,nonatomic) YYTextLayout *statuesLayout;
+@property (strong,nonatomic) TaoTwitterPicturesLayout *pictureLayout;
 @end

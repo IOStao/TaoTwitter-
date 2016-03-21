@@ -38,7 +38,7 @@
             return self.text.length||self.attributedText > 0;
         }
         if (action == @selector(paste:)) {
-            return [UIPasteboard generalPasteboard].string.length > 0 || [UIPasteboard generalPasteboard].attributString.length>0;
+            return [UIPasteboard generalPasteboard].string.length > 0;
         }
     } else {
         if (action == @selector(cut:)) {
@@ -51,7 +51,7 @@
             return self.text.length||self.attributedText > 0;
         }
         if (action == @selector(paste:)) {
-            return self.isFirstResponder && self.editable && ([UIPasteboard generalPasteboard].string.length >0 || [UIPasteboard generalPasteboard].attributString.length >0);
+            return self.isFirstResponder && self.editable && ([UIPasteboard generalPasteboard].string.length >0);
         }
     }
     return NO;
@@ -67,7 +67,7 @@
     UIPasteboard *p = [UIPasteboard generalPasteboard];
     
     if (p.string) {
-        NSAttributedString *att = [[TaoTwitterTextLableRegexKitLiteTool shared]attributedTextWithText:p.string font:self.font];
+        NSAttributedString *att = [[TaoTwitterTextLableRegexKitLiteTool shared]pastAttributedTextWithText:p.string font:self.font];
         [self pasteAttributedText:att settingBlock:^(NSMutableAttributedString *attributedText) {
             [attributedText addAttribute:NSFontAttributeName value:self.font range:NSMakeRange(0, attributedText.length)];
         }];

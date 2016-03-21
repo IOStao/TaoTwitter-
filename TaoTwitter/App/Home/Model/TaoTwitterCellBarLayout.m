@@ -7,17 +7,37 @@
 //
 
 #import "TaoTwitterCellBarLayout.h"
+#import <YYText/YYText.h>
 
 @implementation TaoTwitterCellBarLayout
 
 -(void)setTwitter:(Taostatus *)twitter {
     _twitter = twitter;
-    self.rCcount = [self setupBtnTitleWithCount:twitter.reposts_count defaultTitle:@"转发"];
-    self.CCcount = [self setupBtnTitleWithCount:twitter.comments_count defaultTitle:@"评论"];
-    self.lCcount = [self setupBtnTitleWithCount:twitter.attitudes_count defaultTitle:@"赞"];
+    UIFont *font = [UIFont systemFontOfSize:14];
+    YYTextContainer *container = [YYTextContainer containerWithSize:CGSizeMake(TaoScreenWidth, toolBarHeight)];
+    container.maximumNumberOfRows = 1;
+    
+    NSMutableAttributedString *repostText = [[NSMutableAttributedString alloc] initWithString:twitter.reposts_count <= 0 ? @"转发" : [self setupBtnTitleWithCount:twitter.reposts_count]];
+    repostText.yy_font = font;
+    repostText.yy_color = [UIColor nb_colorWithHex:0x929292];
+    _toolbarRepostTextLayout = [YYTextLayout layoutWithContainer:container text:repostText];
+    _toolbarRepostTextWidth = _toolbarRepostTextLayout.textBoundingRect.size.width;
+    
+    NSMutableAttributedString *commentText = [[NSMutableAttributedString alloc] initWithString:twitter.comments_count <= 0 ? @"评论" : [self setupBtnTitleWithCount:twitter.comments_count]];
+    commentText.yy_font = font;
+    commentText.yy_color = [UIColor nb_colorWithHex:0x929292];
+    _toolbarCommentTextLayout = [YYTextLayout layoutWithContainer:container text:commentText];
+    _toolbarCommentTextWidth = _toolbarCommentTextLayout.textBoundingRect.size.width;
+    
+    NSMutableAttributedString *likeText = [[NSMutableAttributedString alloc] initWithString:twitter.attitudes_count <= 0 ? @"赞" : [self setupBtnTitleWithCount:twitter.attitudes_count]];
+    likeText.yy_font = font;
+    likeText.yy_color = [UIColor nb_colorWithHex:0x929292];
+    _toolbarLikeTextLayout = [YYTextLayout layoutWithContainer:container text:likeText];
+    _toolbarLikeTextWidth = _toolbarLikeTextLayout.textBoundingRect.size.width;
 }
 
-- (NSString *)setupBtnTitleWithCount:(int)count defaultTitle:(NSString *)defaultTitle {
+- (NSString *)setupBtnTitleWithCount:(int)count {
+    NSString *defaultTitle = nil;
     if (count >= 10000) { // [10000, 无限大)
         defaultTitle = [NSString stringWithFormat:@"%.1f万", count / 10000.0];
         // 用空串替换掉所有的.0

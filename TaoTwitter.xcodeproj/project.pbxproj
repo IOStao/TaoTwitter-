@@ -7,6 +7,13 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
+		E10B26251C3266940041CD1A /* TaoTwitterPicturesLayout.m in Sources */ = {isa = PBXBuildFile; fileRef = E10B26241C3266940041CD1A /* TaoTwitterPicturesLayout.m */; };
+		E10B264A1C32B6660041CD1A /* TaoPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = E10B26411C32B6660041CD1A /* TaoPhotoBrowser.m */; };
+		E10B264B1C32B6660041CD1A /* TaoPhotoLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E10B26431C32B6660041CD1A /* TaoPhotoLoadingView.m */; };
+		E10B264C1C32B6660041CD1A /* TaoPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E10B26451C32B6660041CD1A /* TaoPhotoModel.m */; };
+		E10B264D1C32B6660041CD1A /* TaoPhotoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E10B26471C32B6660041CD1A /* TaoPhotoProgressView.m */; };
+		E10B264E1C32B6660041CD1A /* TaoPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = E10B26491C32B6660041CD1A /* TaoPhotoView.m */; };
+		E10D3CEC1C3171970072C53B /* CALayer+YYAdd.m in Sources */ = {isa = PBXBuildFile; fileRef = E10D3CEB1C3171970072C53B /* CALayer+YYAdd.m */; };
 		E16710381BD4CE9F001C3029 /* TaoTwitterTests.m in Sources */ = {isa = PBXBuildFile; fileRef = E16710371BD4CE9F001C3029 /* TaoTwitterTests.m */; };
 		E16710431BD4CE9F001C3029 /* TaoTwitterUITests.m in Sources */ = {isa = PBXBuildFile; fileRef = E16710421BD4CE9F001C3029 /* TaoTwitterUITests.m */; };
 		E19E01521C09EA9A000A6E09 /* Info.plist in Resources */ = {isa = PBXBuildFile; fileRef = E19E014E1C09EA9A000A6E09 /* Info.plist */; };
@@ -101,11 +108,6 @@
 		E1A7C6B01C2E8D6000DFB557 /* TaoAccountHeaderView.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1A7C5051C2E8D6000DFB557 /* TaoAccountHeaderView.xib */; };
 		E1A7C6B11C2E8D6000DFB557 /* TaoAccountTableViewCell.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A7C5071C2E8D6000DFB557 /* TaoAccountTableViewCell.m */; };
 		E1A7C6B21C2E8D6000DFB557 /* TaoAccountTableViewCell.xib in Resources */ = {isa = PBXBuildFile; fileRef = E1A7C5081C2E8D6000DFB557 /* TaoAccountTableViewCell.xib */; };
-		E1A7C6B31C2E8D6000DFB557 /* TaoPhotoBrowser.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A7C50B1C2E8D6000DFB557 /* TaoPhotoBrowser.m */; };
-		E1A7C6B41C2E8D6000DFB557 /* TaoPhotoLoadingView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A7C50D1C2E8D6000DFB557 /* TaoPhotoLoadingView.m */; };
-		E1A7C6B51C2E8D6000DFB557 /* TaoPhotoModel.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A7C50F1C2E8D6000DFB557 /* TaoPhotoModel.m */; };
-		E1A7C6B61C2E8D6000DFB557 /* TaoPhotoProgressView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A7C5111C2E8D6000DFB557 /* TaoPhotoProgressView.m */; };
-		E1A7C6B71C2E8D6000DFB557 /* TaoPhotoView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A7C5131C2E8D6000DFB557 /* TaoPhotoView.m */; };
 		E1A7C6B81C2E8D6000DFB557 /* NBTabBar.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A7C5161C2E8D6000DFB557 /* NBTabBar.m */; };
 		E1A7C6B91C2E8D6000DFB557 /* TaoAlertFiledView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A7C5181C2E8D6000DFB557 /* TaoAlertFiledView.m */; };
 		E1A7C6BA1C2E8D6000DFB557 /* TaoGrowingTextView.m in Sources */ = {isa = PBXBuildFile; fileRef = E1A7C51A1C2E8D6000DFB557 /* TaoGrowingTextView.m */; };
@@ -430,6 +432,20 @@
 /* Begin PBXFileReference section */
 		23CF189B46A9B47C991FBE54 /* libPods.a */ = {isa = PBXFileReference; explicitFileType = archive.ar; includeInIndex = 0; path = libPods.a; sourceTree = BUILT_PRODUCTS_DIR; };
 		36769C27FE427D77DD15CE24 /* Pods.release.xcconfig */ = {isa = PBXFileReference; includeInIndex = 1; lastKnownFileType = text.xcconfig; name = Pods.release.xcconfig; path = "Pods/Target Support Files/Pods/Pods.release.xcconfig"; sourceTree = "<group>"; };
+		E10B26231C3266940041CD1A /* TaoTwitterPicturesLayout.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaoTwitterPicturesLayout.h; sourceTree = "<group>"; };
+		E10B26241C3266940041CD1A /* TaoTwitterPicturesLayout.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaoTwitterPicturesLayout.m; sourceTree = "<group>"; };
+		E10B26401C32B6660041CD1A /* TaoPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaoPhotoBrowser.h; sourceTree = "<group>"; };
+		E10B26411C32B6660041CD1A /* TaoPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaoPhotoBrowser.m; sourceTree = "<group>"; };
+		E10B26421C32B6660041CD1A /* TaoPhotoLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaoPhotoLoadingView.h; sourceTree = "<group>"; };
+		E10B26431C32B6660041CD1A /* TaoPhotoLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaoPhotoLoadingView.m; sourceTree = "<group>"; };
+		E10B26441C32B6660041CD1A /* TaoPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaoPhotoModel.h; sourceTree = "<group>"; };
+		E10B26451C32B6660041CD1A /* TaoPhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaoPhotoModel.m; sourceTree = "<group>"; };
+		E10B26461C32B6660041CD1A /* TaoPhotoProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaoPhotoProgressView.h; sourceTree = "<group>"; };
+		E10B26471C32B6660041CD1A /* TaoPhotoProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaoPhotoProgressView.m; sourceTree = "<group>"; };
+		E10B26481C32B6660041CD1A /* TaoPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaoPhotoView.h; sourceTree = "<group>"; };
+		E10B26491C32B6660041CD1A /* TaoPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaoPhotoView.m; sourceTree = "<group>"; };
+		E10D3CEA1C3171970072C53B /* CALayer+YYAdd.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = "CALayer+YYAdd.h"; sourceTree = "<group>"; };
+		E10D3CEB1C3171970072C53B /* CALayer+YYAdd.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = "CALayer+YYAdd.m"; sourceTree = "<group>"; };
 		E167101A1BD4CE9F001C3029 /* TaoTwitter.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = TaoTwitter.app; sourceTree = BUILT_PRODUCTS_DIR; };
 		E16710331BD4CE9F001C3029 /* TaoTwitterTests.xctest */ = {isa = PBXFileReference; explicitFileType = wrapper.cfbundle; includeInIndex = 0; path = TaoTwitterTests.xctest; sourceTree = BUILT_PRODUCTS_DIR; };
 		E16710371BD4CE9F001C3029 /* TaoTwitterTests.m */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.c.objc; path = TaoTwitterTests.m; sourceTree = "<group>"; };
@@ -610,16 +626,6 @@
 		E1A7C5061C2E8D6000DFB557 /* TaoAccountTableViewCell.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaoAccountTableViewCell.h; sourceTree = "<group>"; };
 		E1A7C5071C2E8D6000DFB557 /* TaoAccountTableViewCell.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaoAccountTableViewCell.m; sourceTree = "<group>"; };
 		E1A7C5081C2E8D6000DFB557 /* TaoAccountTableViewCell.xib */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = file.xib; path = TaoAccountTableViewCell.xib; sourceTree = "<group>"; };
-		E1A7C50A1C2E8D6000DFB557 /* TaoPhotoBrowser.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaoPhotoBrowser.h; sourceTree = "<group>"; };
-		E1A7C50B1C2E8D6000DFB557 /* TaoPhotoBrowser.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaoPhotoBrowser.m; sourceTree = "<group>"; };
-		E1A7C50C1C2E8D6000DFB557 /* TaoPhotoLoadingView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaoPhotoLoadingView.h; sourceTree = "<group>"; };
-		E1A7C50D1C2E8D6000DFB557 /* TaoPhotoLoadingView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaoPhotoLoadingView.m; sourceTree = "<group>"; };
-		E1A7C50E1C2E8D6000DFB557 /* TaoPhotoModel.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaoPhotoModel.h; sourceTree = "<group>"; };
-		E1A7C50F1C2E8D6000DFB557 /* TaoPhotoModel.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaoPhotoModel.m; sourceTree = "<group>"; };
-		E1A7C5101C2E8D6000DFB557 /* TaoPhotoProgressView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaoPhotoProgressView.h; sourceTree = "<group>"; };
-		E1A7C5111C2E8D6000DFB557 /* TaoPhotoProgressView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaoPhotoProgressView.m; sourceTree = "<group>"; };
-		E1A7C5121C2E8D6000DFB557 /* TaoPhotoView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaoPhotoView.h; sourceTree = "<group>"; };
-		E1A7C5131C2E8D6000DFB557 /* TaoPhotoView.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = TaoPhotoView.m; sourceTree = "<group>"; };
 		E1A7C5151C2E8D6000DFB557 /* NBTabBar.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = NBTabBar.h; sourceTree = "<group>"; };
 		E1A7C5161C2E8D6000DFB557 /* NBTabBar.m */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.objc; path = NBTabBar.m; sourceTree = "<group>"; };
 		E1A7C5171C2E8D6000DFB557 /* TaoAlertFiledView.h */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.c.h; path = TaoAlertFiledView.h; sourceTree = "<group>"; };
@@ -978,6 +984,23 @@
 			name = Frameworks;
 			sourceTree = "<group>";
 		};
+		E10B263F1C32B6660041CD1A /* PhotoBroswer */ = {
+			isa = PBXGroup;
+			children = (
+				E10B26401C32B6660041CD1A /* TaoPhotoBrowser.h */,
+				E10B26411C32B6660041CD1A /* TaoPhotoBrowser.m */,
+				E10B26421C32B6660041CD1A /* TaoPhotoLoadingView.h */,
+				E10B26431C32B6660041CD1A /* TaoPhotoLoadingView.m */,
+				E10B26441C32B6660041CD1A /* TaoPhotoModel.h */,
+				E10B26451C32B6660041CD1A /* TaoPhotoModel.m */,
+				E10B26461C32B6660041CD1A /* TaoPhotoProgressView.h */,
+				E10B26471C32B6660041CD1A /* TaoPhotoProgressView.m */,
+				E10B26481C32B6660041CD1A /* TaoPhotoView.h */,
+				E10B26491C32B6660041CD1A /* TaoPhotoView.m */,
+			);
+			path = PhotoBroswer;
+			sourceTree = "<group>";
+		};
 		E16710111BD4CE9F001C3029 = {
 			isa = PBXGroup;
 			children = (
@@ -1267,6 +1290,8 @@
 		E1A7C4771C2E8D6000DFB557 /* Model */ = {
 			isa = PBXGroup;
 			children = (
+				E10B26231C3266940041CD1A /* TaoTwitterPicturesLayout.h */,
+				E10B26241C3266940041CD1A /* TaoTwitterPicturesLayout.m */,
 				E1A7C4781C2E8D6000DFB557 /* TaoRStatuesViewLayout.h */,
 				E1A7C4791C2E8D6000DFB557 /* TaoRStatuesViewLayout.m */,
 				E1A7C47A1C2E8D6000DFB557 /* TaoStatuesViewLayout.h */,
@@ -1301,9 +1326,9 @@
 		E1A7C4871C2E8D6000DFB557 /* View */ = {
 			isa = PBXGroup;
 			children = (
-				E1A7C4881C2E8D6000DFB557 /* Cell */,
 				E1A7C4921C2E8D6000DFB557 /* TaoHomeTitleBtn.h */,
 				E1A7C4931C2E8D6000DFB557 /* TaoHomeTitleBtn.m */,
+				E1A7C4881C2E8D6000DFB557 /* Cell */,
 				E1A7C4941C2E8D6000DFB557 /* TwitterDetailView */,
 				E1A7C49F1C2E8D6000DFB557 /* TwitterView */,
 			);
@@ -1348,7 +1373,6 @@
 			children = (
 				E1A7C4A01C2E8D6000DFB557 /* TaoTwitterCellBottomBar.h */,
 				E1A7C4A11C2E8D6000DFB557 /* TaoTwitterCellBottomBar.m */,
-				E1A7C4A21C2E8D6000DFB557 /* TaoTwitterPhotoView */,
 				E1A7C4A71C2E8D6000DFB557 /* TaoTwitterRStatusView.h */,
 				E1A7C4A81C2E8D6000DFB557 /* TaoTwitterRStatusView.m */,
 				E1A7C4A91C2E8D6000DFB557 /* TaoTwitterStatusView.h */,
@@ -1357,6 +1381,7 @@
 				E1A7C4AC1C2E8D6000DFB557 /* TaoTwitterTextLable.m */,
 				E1A7C4AD1C2E8D6000DFB557 /* TaoTwitterUserImage.h */,
 				E1A7C4AE1C2E8D6000DFB557 /* TaoTwitterUserImage.m */,
+				E1A7C4A21C2E8D6000DFB557 /* TaoTwitterPhotoView */,
 			);
 			path = TwitterView;
 			sourceTree = "<group>";
@@ -1404,6 +1429,8 @@
 		E1A7C4B51C2E8D6000DFB557 /* Catecary */ = {
 			isa = PBXGroup;
 			children = (
+				E10D3CEA1C3171970072C53B /* CALayer+YYAdd.h */,
+				E10D3CEB1C3171970072C53B /* CALayer+YYAdd.m */,
 				E1A7C4B61C2E8D6000DFB557 /* Foundation+Log.m */,
 				E1A7C4B71C2E8D6000DFB557 /* NSDate+Extension.h */,
 				E1A7C4B81C2E8D6000DFB557 /* NSDate+Extension.m */,
@@ -1547,8 +1574,8 @@
 		E1A7C5011C2E8D6000DFB557 /* View */ = {
 			isa = PBXGroup;
 			children = (
+				E10B263F1C32B6660041CD1A /* PhotoBroswer */,
 				E1A7C5021C2E8D6000DFB557 /* cell */,
-				E1A7C5091C2E8D6000DFB557 /* PhotoBroswer */,
 				E1A7C5141C2E8D6000DFB557 /* systemView */,
 			);
 			path = View;
@@ -1565,23 +1592,6 @@
 				E1A7C5081C2E8D6000DFB557 /* TaoAccountTableViewCell.xib */,
 			);
 			path = cell;
-			sourceTree = "<group>";
-		};
-		E1A7C5091C2E8D6000DFB557 /* PhotoBroswer */ = {
-			isa = PBXGroup;
-			children = (
-				E1A7C50A1C2E8D6000DFB557 /* TaoPhotoBrowser.h */,
-				E1A7C50B1C2E8D6000DFB557 /* TaoPhotoBrowser.m */,
-				E1A7C50C1C2E8D6000DFB557 /* TaoPhotoLoadingView.h */,
-				E1A7C50D1C2E8D6000DFB557 /* TaoPhotoLoadingView.m */,
-				E1A7C50E1C2E8D6000DFB557 /* TaoPhotoModel.h */,
-				E1A7C50F1C2E8D6000DFB557 /* TaoPhotoModel.m */,
-				E1A7C5101C2E8D6000DFB557 /* TaoPhotoProgressView.h */,
-				E1A7C5111C2E8D6000DFB557 /* TaoPhotoProgressView.m */,
-				E1A7C5121C2E8D6000DFB557 /* TaoPhotoView.h */,
-				E1A7C5131C2E8D6000DFB557 /* TaoPhotoView.m */,
-			);
-			path = PhotoBroswer;
 			sourceTree = "<group>";
 		};
 		E1A7C5141C2E8D6000DFB557 /* systemView */ = {
@@ -2542,18 +2552,18 @@
 				E1A7C69F1C2E8D6000DFB557 /* NBTabBarViewController.m in Sources */,
 				E1A7C6611C2E8D6000DFB557 /* TaoPopMenuView.m in Sources */,
 				E1A7C6941C2E8D6000DFB557 /* UIImage+Tao.m in Sources */,
-				E1A7C6B71C2E8D6000DFB557 /* TaoPhotoView.m in Sources */,
 				E1A7C6A91C2E8D6000DFB557 /* BarItem.m in Sources */,
 				E1A7C6801C2E8D6000DFB557 /* TaoDetialRecommendView.m in Sources */,
 				E1A7C69B1C2E8D6000DFB557 /* UIView+TaoSingnal.m in Sources */,
 				E1A7C6AA1C2E8D6000DFB557 /* CBStoreHouseRefreshControl.m in Sources */,
 				E1A7C65F1C2E8D6000DFB557 /* TaoComposeTextViewManager.m in Sources */,
 				E1A7C6701C2E8D6000DFB557 /* TaoHomeViewController.m in Sources */,
-				E1A7C6B51C2E8D6000DFB557 /* TaoPhotoModel.m in Sources */,
+				E10B264C1C32B6660041CD1A /* TaoPhotoModel.m in Sources */,
 				E1A7C68F1C2E8D6000DFB557 /* NSObject+Singleton.m in Sources */,
 				E1A7C6991C2E8D6000DFB557 /* UIView+Extension.m in Sources */,
+				E10B264B1C32B6660041CD1A /* TaoPhotoLoadingView.m in Sources */,
+				E10B26251C3266940041CD1A /* TaoTwitterPicturesLayout.m in Sources */,
 				E1A7C7ED1C2E8DBC00DFB557 /* LayoutHorizontal.m in Sources */,
-				E1A7C6B61C2E8D6000DFB557 /* TaoPhotoProgressView.m in Sources */,
 				E1A7C6B11C2E8D6000DFB557 /* TaoAccountTableViewCell.m in Sources */,
 				E1A7C6AE1C2E8D6000DFB557 /* TaoUserDefults.m in Sources */,
 				E1A7C6661C2E8D6000DFB557 /* TaoComposeEmotionListViewPopView.m in Sources */,
@@ -2573,9 +2583,9 @@
 				E1A7C6651C2E8D6000DFB557 /* TaoComposeEmotionListView.m in Sources */,
 				E1A7C6A71C2E8D6000DFB557 /* TaoNetManagerTools.m in Sources */,
 				E1A7C6A11C2E8D6000DFB557 /* TaoAccountViewModel.m in Sources */,
+				E10B264E1C32B6660041CD1A /* TaoPhotoView.m in Sources */,
 				E1A7C69D1C2E8D6000DFB557 /* NBBaseTableViewController.m in Sources */,
 				E1A7C69C1C2E8D6000DFB557 /* TaoConst.m in Sources */,
-				E1A7C6B41C2E8D6000DFB557 /* TaoPhotoLoadingView.m in Sources */,
 				E1A7C68D1C2E8D6000DFB557 /* Foundation+Log.m in Sources */,
 				E1A7C6861C2E8D6000DFB557 /* TaoStatusPhotoView.m in Sources */,
 				E1A7C6B81C2E8D6000DFB557 /* NBTabBar.m in Sources */,
@@ -2583,12 +2593,14 @@
 				E1A7C6681C2E8D6000DFB557 /* TaoCoposeEmotionBottomBarButton.m in Sources */,
 				E1A7C6791C2E8D6000DFB557 /* TaoDetialTwitterCommentTableViewCell.m in Sources */,
 				E1A7C69A1C2E8D6000DFB557 /* UIView+SeparateLine.m in Sources */,
+				E10B264D1C32B6660041CD1A /* TaoPhotoProgressView.m in Sources */,
 				E1A7C6951C2E8D6000DFB557 /* UIImageView+TaoUserImgeView.m in Sources */,
 				E1A7C6921C2E8D6000DFB557 /* UIBarButtonItem+Extension.m in Sources */,
 				E1A7C68C1C2E8D6000DFB557 /* TaoTwitterViewModel.m in Sources */,
 				E1A7C6851C2E8D6000DFB557 /* TaoStatusPhotosView.m in Sources */,
 				E1A7C6841C2E8D6000DFB557 /* TaoTwitterCellBottomBar.m in Sources */,
 				E1A7C6BB1C2E8D6000DFB557 /* YYFPSLabel.m in Sources */,
+				E10B264A1C32B6660041CD1A /* TaoPhotoBrowser.m in Sources */,
 				E1A7C6581C2E8D6000DFB557 /* TaoComposeViewController.m in Sources */,
 				E1A7C6811C2E8D6000DFB557 /* TaoDetialTwitterSctionHeaderView.m in Sources */,
 				E1A7C6911C2E8D6000DFB557 /* NSTextAttachment+TaoTextAttachment.m in Sources */,
@@ -2602,6 +2614,7 @@
 				E1A7C6A21C2E8D6000DFB557 /* TaoSearverAPI.m in Sources */,
 				E1A7C6AD1C2E8D6000DFB557 /* TaoLoginManager.m in Sources */,
 				E19E01531C09EA9A000A6E09 /* main.m in Sources */,
+				E10D3CEC1C3171970072C53B /* CALayer+YYAdd.m in Sources */,
 				E1A7C67E1C2E8D6000DFB557 /* TaoHomeTitleBtn.m in Sources */,
 				E1A7C6AF1C2E8D6000DFB557 /* TaoAccountHeaderView.m in Sources */,
 				E1A7C6621C2E8D6000DFB557 /* TaoComposeTextView.m in Sources */,
@@ -2621,7 +2634,6 @@
 				E1A7C6891C2E8D6000DFB557 /* TaoTwitterTextLable.m in Sources */,
 				E1A7C6A51C2E8D6000DFB557 /* TaoHTTP.m in Sources */,
 				E1A7C6A01C2E8D6000DFB557 /* TaoLoginViewController.m in Sources */,
-				E1A7C6B31C2E8D6000DFB557 /* TaoPhotoBrowser.m in Sources */,
 				E1A7C6981C2E8D6000DFB557 /* UIView+BHBAnimation.m in Sources */,
 				E1A7C6961C2E8D6000DFB557 /* UIPasteboard+AttributedSring.m in Sources */,
 				E1A7C66B1C2E8D6000DFB557 /* NBBaseViewController.m in Sources */,
@@ -2780,7 +2792,6 @@
 					"-l\"MBProgressHUD\"",
 					"-l\"MJExtension\"",
 					"-l\"Masonry\"",
-					"-l\"SDWebImage\"",
 					"-l\"UITableView+FDTemplateLayoutCell\"",
 					"-l\"WeiboSDK\"",
 					"-l\"sqlite3\"",
@@ -2834,7 +2845,6 @@
 					"-l\"MBProgressHUD\"",
 					"-l\"MJExtension\"",
 					"-l\"Masonry\"",
-					"-l\"SDWebImage\"",
 					"-l\"UITableView+FDTemplateLayoutCell\"",
 					"-l\"WeiboSDK\"",
 					"-l\"sqlite3\"",
